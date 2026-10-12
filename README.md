@@ -166,3 +166,4 @@ To add or rename a policy page: add its component in `src/pages/legal/`, then ad
 - The feedback form sends feedback to your WhatsApp. It is not stored in the database.
 - The old "Ask us" chat box was removed. It needed a paid server.
 - `public/robots.txt` and `public/sitemap.xml` are created by `npm run build` from `VITE_SITE_URL`. They are not stored in Git.
+# Corewellinfra.in
