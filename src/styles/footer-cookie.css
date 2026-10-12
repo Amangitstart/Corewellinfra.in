@@ -1,0 +1,23 @@
+/* Floating buttons, footer, cookie banner */
+/* floating buttons + footer */
+.float{bottom:calc(16px + env(safe-area-inset-bottom,0px))}
+body.cb .float{bottom:calc(150px + env(safe-area-inset-bottom,0px))}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 22px}
+footer a,footer button{color:#ccc;text-decoration:underline;background:none;border:0;font:inherit;cursor:pointer}
+footer a:hover,footer button:hover{color:#fff}
+
+/* cookie banner (only shown when analytics is switched on) */
+.cookie{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:150;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.25);padding:16px 18px;max-width:640px;margin:0 auto;display:none}
+.cookie.show{display:block}
+.cookie p{font-size:.92rem;color:#333}
+.cookie p a{color:var(--red);text-decoration:underline}
+.cookie .row{display:flex;gap:10px;margin-top:12px}
+.cookie .btn{flex:1;padding:12px 14px;font-size:.95rem;box-shadow:none}
+.cookie .btn.ghost{color:var(--ink);border-color:#bbb}
+
+/* Legal links in the footer */
+footer .wrap>span{flex-basis:100%;text-align:center}
+.footlegal{flex-basis:100%;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px 18px}
+.footlegal strong{color:#fff;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase}
+.footlegal ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;margin:0;padding:0}
+@media(max-width:560px){.footlegal{flex-direction:column;gap:8px}.footlegal ul{flex-direction:column;align-items:center}}

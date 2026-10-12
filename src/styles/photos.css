@@ -1,0 +1,7 @@
+/* Photos */
+/* photos */
+.mason{columns:3 260px;column-gap:16px;margin-top:32px}
+.pf{break-inside:avoid;margin:0 0 16px;border-radius:12px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 8px 24px rgba(0,0,0,.05)}
+.pf img{width:100%;height:auto;display:block}
+.pf figcaption{padding:10px 14px;font-size:.92rem;color:var(--grey)}
+@media(max-width:560px){.mason{columns:2 150px;column-gap:10px}.pf{margin-bottom:10px}.pf figcaption{padding:8px 10px;font-size:.82rem}}

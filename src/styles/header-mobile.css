@@ -1,0 +1,24 @@
+/* Sticky header with CTA and mobile menu */
+/* ===== Launch features ===== */
+.skip{position:absolute;left:-9999px;top:0;background:#fff;color:var(--ink);padding:10px 16px;z-index:300;font-weight:600}
+.skip:focus{left:8px;top:8px}
+
+/* sticky header with CTA + mobile menu */
+header{transition:box-shadow .2s}
+header.scrolled{box-shadow:0 4px 18px rgba(0,0,0,.1)}
+header nav ul{gap:22px}
+.hright{display:flex;align-items:center;gap:10px}
+.hcta{padding:10px 18px;font-size:.95rem;box-shadow:none;white-space:nowrap}
+.menu span{transition:transform .2s,opacity .2s}
+.menu[aria-expanded=true] span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.menu[aria-expanded=true] span:nth-child(2){opacity:0}
+.menu[aria-expanded=true] span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+@media(max-width:960px){
+ .menu{display:block}
+ header nav{position:absolute;left:0;right:0;top:calc(68px + env(safe-area-inset-top,0px));background:#fff;border-bottom:1px solid var(--line);display:none;box-shadow:0 12px 24px rgba(0,0,0,.08)}
+ header nav.open{display:block}
+ header nav ul{flex-direction:column;gap:0;padding:8px 20px}
+ header nav li a{display:block;padding:14px 0;border-bottom:1px solid var(--line)}
+}
+@media(max-width:420px){.hcta{padding:9px 12px;font-size:.88rem}.logo{font-size:1.1rem}}
+

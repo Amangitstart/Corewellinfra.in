@@ -1,0 +1,19 @@
+/* Hero slideshow */
+/* hero slideshow */
+.hero{position:relative;min-height:calc(100svh - 110px);min-height:calc(100vh - 110px);color:#fff;display:flex;align-items:center;overflow:hidden;background:#222}
+.slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1s ease}
+.slide.on{opacity:1;animation:zoom 9s ease-out forwards}
+@keyframes zoom{from{transform:scale(1)}to{transform:scale(1.08)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.5) 50%,rgba(0,0,0,.72))}
+.hero .wrap{position:relative;z-index:2;text-align:center;padding-top:48px;padding-bottom:90px}
+.hero h1{font-size:clamp(2.1rem,6vw,4rem);font-weight:800;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+.hero h1 em{font-style:normal;color:#ff5a47}
+.hero p{max-width:620px;margin:20px auto 32px;font-size:1.15rem;color:#e8e8e8}
+.hero .actions{display:flex;gap:14px;justify-content:center}
+.arrow{position:absolute;top:50%;z-index:3;transform:translateY(-50%);background:none;border:0;color:#fff;font-size:2.6rem;padding:10px;cursor:pointer;opacity:.8}
+.arrow:hover{opacity:1}
+.arrow.prev{left:6px}.arrow.next{right:6px}
+.dots{position:absolute;bottom:26px;left:0;right:0;z-index:3;display:flex;justify-content:center;gap:10px}
+.dots button{width:44px;height:5px;border:0;background:rgba(255,255,255,.4);cursor:pointer;padding:0}
+.dots button.on{background:#fff}
+

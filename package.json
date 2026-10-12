@@ -1,0 +1,24 @@
+{
+  "name": "corewell-infra-developers-website",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Website for Corewell Infra Developers, Varanasi. React + Vite, lead form saved to Supabase.",
+  "scripts": {
+    "dev": "vite",
+    "prebuild": "node scripts/generate-seo-files.mjs",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test \"tests/**/*.test.js\""
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.117.3",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-router-dom": "^7.18.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.2",
+    "vite": "^8.3.4"
+  }
+}

@@ -1,0 +1,24 @@
+/* Business card and its buttons */
+/* business card (shown inside the thank-you box after the form is sent) */
+.done .dhint{margin:24px 0 12px;font-weight:600;color:#111}
+.done .donecard svg{display:block;width:100%;height:auto;margin:0 0 4px;fill:revert;stroke:none;border-radius:14px;box-shadow:0 16px 36px rgba(0,0,0,.2)}
+.done .donecard svg circle,.done .donecard svg path{stroke-dasharray:none;stroke-dashoffset:0;animation:none}
+.bbtns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.bbtns .btn{padding:11px 8px;font-size:.92rem;cursor:pointer;flex:none}
+.bbtns .btn:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.done #cardBtns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.done .cstatus{margin:10px 0 0;min-height:1.4em;font-size:.92rem}
+#done{scroll-margin-top:90px}
+#donePhone{white-space:nowrap}
+/* card actions */
+#cardBtns [hidden]{display:none!important}
+#cardBtns .btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none}
+#cardBtns .btn.busy{opacity:.8}
+#cardBtns .btn.busy::after{content:"";width:14px;height:14px;margin-left:8px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:cspin .7s linear infinite}
+#cardBtns button:disabled,#cardBtns a[aria-disabled="true"]{opacity:.55;pointer-events:none}
+@keyframes cspin{to{transform:rotate(360deg)}}
+@media(max-width:820px){#cardBtns{display:grid;grid-template-columns:1fr 1fr;gap:10px}#cardBtns .btn{padding:11px 8px;flex:none}}
+.cstatus{min-height:1.4em;margin-top:12px;font-size:.92rem;color:var(--grey)}
+.cstatus.ok{color:#0f7b3c}.cstatus.err{color:var(--red-dark);font-weight:600}
+.cstatus.err a,.cstatus b{word-break:break-all}
+@media(prefers-reduced-motion:reduce){#cardBtns .btn.busy::after{animation-duration:2s}}

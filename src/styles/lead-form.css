@@ -1,0 +1,19 @@
+/* Lead form states */
+/* lead form */
+form input,form select,form textarea{min-height:48px;font-size:16px}
+form textarea{min-height:92px}
+.req-note{font-size:.82rem;color:var(--grey);margin-top:16px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.ferr{display:block;color:#b3261e;font-size:.85rem;margin-top:4px;min-height:0}
+form input.bad,form select.bad,form textarea.bad{border-color:#b3261e;box-shadow:0 0 0 3px rgba(179,38,30,.12)}
+label.consent a{color:var(--red);text-decoration:underline}
+.errbox{display:none;background:#fdecea;border:1px solid #f5c2bd;border-radius:6px;padding:12px 14px;margin-top:14px;color:#8a1c14;font-size:.92rem}
+.errbox.show{display:block}
+.errbox a{font-weight:600;text-decoration:underline}
+.cfbox{margin-top:14px}
+form .btn[disabled]{opacity:.7;cursor:wait;transform:none}
+.done .wa{background:#0f7b3c;border-color:#0f7b3c;box-shadow:0 8px 20px rgba(37,211,102,.3)}
+.done .small{font-size:.92rem;margin:18px 0 0}
+.done .small a{color:var(--red);font-weight:600}
+.done:focus{outline:0}
+

@@ -1,0 +1,21 @@
+# dependencies and build output
+node_modules/
+dist/
+.vite/
+
+# local environment files (secrets and personal settings)
+.env
+.env.*
+!.env.example
+
+# files created by "npm run build"
+public/robots.txt
+public/sitemap.xml
+
+# editor, system and logs
+.DS_Store
+Thumbs.db
+*.log
+.vscode/*
+!.vscode/extensions.json
+.vercel/

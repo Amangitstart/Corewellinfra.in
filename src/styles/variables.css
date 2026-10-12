@@ -1,0 +1,9 @@
+/* Design tokens: change colours here and the whole site follows. */
+:root {
+  --ink:#111;
+  --paper:#f6f4f1;
+  --red:#c63a2b;
+  --red-dark:#a52e21;
+  --grey:#5b5b5b;
+  --line:#e2ded8
+}
