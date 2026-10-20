@@ -16,7 +16,7 @@ export default function HeroSection({ onViewPhotos }) {
   }, [restartKey, count]);
 
   return (
-    <section className="hero" id="home" style={{ padding: 0 }} aria-roledescription="carousel" aria-label="Corewell photos">
+    <section className="hero" id="home" style={{ padding: 0 }} role="region" aria-roledescription="carousel" aria-label="Corewell photos">
       {heroSlides.map((slide, i) => (
         <div
           key={slide.src}
@@ -36,7 +36,7 @@ export default function HeroSection({ onViewPhotos }) {
       </div>
       <div className="dots">
         {heroSlides.map((slide, i) => (
-          <button key={slide.src} type="button" aria-label={`Photo ${i + 1}`} className={i === index ? 'on' : undefined} onClick={() => go(i)} />
+        <button key={slide.src} type="button" aria-label={`Photo ${i + 1}`} aria-current={i === index ? 'true' : undefined} className={i === index ? 'on' : undefined} onClick={() => go(i)} />
         ))}
       </div>
       <button className="allpics" type="button" onClick={onViewPhotos}>View all photos</button>

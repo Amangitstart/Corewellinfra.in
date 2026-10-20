@@ -40,7 +40,7 @@ export default function FeedbackSection() {
             <div className="stars" role="radiogroup" aria-labelledby="rateLbl">
               {STARS.map((n) => (
                 <Fragment key={n}>
-                  <input type="radio" name="rate" id={`r${n}`} value={n} checked={rating === n} onChange={() => setRating(n)} />
+                  <input type="radio" name="rate" id={`r${n}`} value={n} checked={rating === n} onChange={() => setRating(n)} aria-label={`${n} star${n === '1' ? '' : 's'}`} />
                   <label htmlFor={`r${n}`} title={`${n} star${n === '1' ? '' : 's'}`}>&#9733;</label>
                 </Fragment>
               ))}
