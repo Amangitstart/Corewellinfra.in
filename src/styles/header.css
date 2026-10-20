@@ -5,10 +5,10 @@
 .strip a{color:#fff;font-weight:500}
 header{position:sticky;top:0;padding-top:env(safe-area-inset-top,0px);z-index:30;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
-.logo{display:flex;align-items:center;gap:9px;flex:0 0 auto}
-.brand-mark{display:block;width:48px;height:48px;object-fit:cover;object-position:center;border-radius:7px;background:#252525}
-.brand-name{font-size:1.25rem;font-weight:800;color:var(--red);line-height:1.05;letter-spacing:.14em}
-.brand-name small{display:block;font-size:.52rem;letter-spacing:.28em;color:var(--grey);font-weight:500;margin-top:5px}
+.logo{display:flex;align-items:center;gap:12px;flex:0 0 auto}
+.brand-mark{display:block;width:62px;height:62px;object-fit:cover;object-position:center;border-radius:8px;background:#252525}
+.brand-name{font-size:1.38rem;font-weight:800;color:var(--red);line-height:1.05;letter-spacing:.16em}
+.brand-name small{display:block;font-size:.57rem;letter-spacing:.3em;color:var(--grey);font-weight:500;margin-top:6px}
 header nav ul{display:flex;gap:28px;list-style:none;font-weight:500}
 header nav a:hover{color:var(--red)}
 .menu{display:none;background:none;border:0;cursor:pointer;padding:8px}
