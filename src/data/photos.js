@@ -81,6 +81,29 @@ export const projectPhotos = [
   }
 ];
 
+export const projectVideos = [
+  {
+    "src": "/videos/project-01.mp4",
+    "title": "On-site construction work",
+    "description": "A look at active construction work and progress at one of our project sites."
+  },
+  {
+    "src": "/videos/project-02.mp4",
+    "title": "Project work in progress",
+    "description": "Our team carrying out practical site work with attention to a strong, finished result."
+  },
+  {
+    "src": "/videos/project-03.mp4",
+    "title": "Site development and preparation",
+    "description": "Ground preparation and development work taking shape on site."
+  },
+  {
+    "src": "/videos/project-04.mp4",
+    "title": "Construction team in action",
+    "description": "Workers, equipment and coordinated site activity supporting the project from start to finish."
+  }
+];
+
 export const clientPhotos = [
   {
     "src": "/images/group-of-clients-at-a-project-site.jpg",

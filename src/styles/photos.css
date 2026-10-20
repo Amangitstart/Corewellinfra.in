@@ -5,3 +5,10 @@
 .pf img{width:100%;height:auto;display:block}
 .pf figcaption{padding:10px 14px;font-size:.92rem;color:var(--grey)}
 @media(max-width:560px){.mason{columns:2 150px;column-gap:10px}.pf{margin-bottom:10px}.pf figcaption{padding:8px 10px;font-size:.82rem}}
+
+.project-videos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:36px}
+.project-video{margin:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 8px 24px rgba(0,0,0,.05)}
+.project-video video{display:block;width:100%;aspect-ratio:16/9;background:#141414;object-fit:cover}
+.project-video h3{font-size:1.12rem;margin:18px 18px 6px}
+.project-video p{margin:0 18px 20px;color:var(--grey);font-size:.94rem}
+@media(max-width:700px){.project-videos{grid-template-columns:1fr;gap:16px}.project-video h3{margin-top:14px}}
