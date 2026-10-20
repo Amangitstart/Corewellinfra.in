@@ -10,13 +10,6 @@ export const projectPhotos = [
     "caption": "Multi-storey building under construction"
   },
   {
-    "src": "/images/completed-building-with-ground-floor-uni.jpg",
-    "width": 750,
-    "height": 1000,
-    "alt": "Completed building with ground-floor units",
-    "caption": "Completed building with ground-floor units"
-  },
-  {
     "src": "/images/finished-interior-with-tile-floor-and-st.jpg",
     "width": 750,
     "height": 1000,
@@ -43,13 +36,6 @@ export const projectPhotos = [
     "height": 1000,
     "alt": "Multi-storey building frame with tractor-trolley",
     "caption": "Multi-storey building frame and site yard"
-  },
-  {
-    "src": "/images/finished-ground-floor-with-staircase-and.jpg",
-    "width": 750,
-    "height": 1000,
-    "alt": "Finished ground floor with staircase and doors",
-    "caption": "Finished interior: staircase and doors"
   },
   {
     "src": "/images/yellow-backhoe-loader-on-a-graded-site-a.jpg",
