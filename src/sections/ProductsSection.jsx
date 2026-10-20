@@ -1,6 +1,6 @@
 import { products, productsIntro } from '../data/products.js';
 
-export default function ProductsSection({ onViewPhotos }) {
+export default function ProductsSection() {
   return (
     <section id="products">
       <div className="wrap">
@@ -16,9 +16,6 @@ export default function ProductsSection({ onViewPhotos }) {
             </div>
           ))}
         </div>
-        <p style={{ marginTop: 28 }}>
-          <button className="btn more" type="button" onClick={onViewPhotos}>View all photos</button>
-        </p>
       </div>
     </section>
   );
