@@ -45,7 +45,8 @@ export default function ContactSection() {
             <p><a href={`tel:${site.phone}`}>{site.phoneDisplay}</a></p>
             <div className="callbox">
               <a className="btn" href={`tel:${site.phone}`}><PhoneIcon />Call now</a>
-              <a className="btn wa" href={whatsappLink(`Hello ${site.name}, I want a quote for paver blocks.`)} target="_blank" rel="noopener noreferrer" onClick={() => track('whatsapp_click', { place: 'page' })}>
+              <a className="btn wa" href={whatsappLink(`Hello ${site.name}, Hello Corewell Infra Developers, I am interested in your construction services and would like to request a quotation.
+               Please share your pricing and availability. Thank you..`)} target="_blank" rel="noopener noreferrer" onClick={() => track('whatsapp_click', { place: 'page' })}>
                 <WhatsAppButtonIcon />Chat on WhatsApp
               </a>
             </div>
