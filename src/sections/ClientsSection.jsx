@@ -10,7 +10,7 @@ export default function ClientsSection() {
       <div className="wrap">
         <h2>{clientsIntro.title}</h2>
         <p className="intro">{clientsIntro.text}</p>
-        <PhotoGallery photos={clientPhotos} onOpen={setOpenIndex} />
+        <PhotoGallery photos={clientPhotos} onOpen={setOpenIndex} variant="clients-gallery" />
       </div>
       <Lightbox photos={clientPhotos} index={openIndex} onChange={setOpenIndex} onClose={() => setOpenIndex(null)} />
     </section>

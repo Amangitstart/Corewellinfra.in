@@ -31,6 +31,11 @@ export default function FeedbackSection() {
         <div>
           <h2>Share your feedback</h2>
           <p className="intro">Bought from us? Tell us how it went. Your feedback helps us improve and helps other buyers.</p>
+          <div className="fb-thanks-art">
+            <img src="/images/feedback-thank-you.png" alt="Illustration of people sharing feedback" />
+            <h3>Thank you!</h3>
+            <p>We look forward to hearing from you.</p>
+          </div>
         </div>
         <div className="fbwrap">
           <form id="fbForm" noValidate className={leaving ? 'sent' : undefined} style={sent ? { display: 'none' } : undefined} onSubmit={onSubmit}>

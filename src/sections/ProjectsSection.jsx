@@ -24,13 +24,6 @@ export default function ProjectsSection() {
             </article>
           ))}
         </div>
-        <div className="ctaband">
-          <div>
-            <b>Planning a project?</b>
-            <span>Share your name, number and location. We will call you with a price.</span>
-          </div>
-          <a className="btn" href="#quote">Get a quote</a>
-        </div>
       </div>
       <Lightbox photos={projectPhotos} index={openIndex} onChange={setOpenIndex} onClose={() => setOpenIndex(null)} />
     </section>

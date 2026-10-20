@@ -14,12 +14,12 @@ function GalleryItem({ photo, index, onOpen }) {
   );
 }
 
-// A masonry photo grid. Clicking a photo calls onOpen(index) so the page can show the Lightbox.
-export default function PhotoGallery({ photos, onOpen }) {
+// A structured photo grid. Clicking a photo calls onOpen(index) so the page can show the Lightbox.
+export default function PhotoGallery({ photos, onOpen, variant = '' }) {
   const ref = useRef(null);
   useParallax(ref);
   return (
-    <div className="mason gal" ref={ref}>
+    <div className={`mason gal${variant ? ` ${variant}` : ''}`} ref={ref}>
       {photos.map((photo, i) => (
         <GalleryItem key={photo.src} photo={photo} index={i} onOpen={onOpen} />
       ))}

@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 
 const SELECTORS = [
-  '.workbox', '.wthumbs', '.fbwrap', 'section h2', '.intro', '.card', '.steps li', '.formwrap',
-  '.infogrid>div', '.mailin>*', '.tile', '.feat .f', '.yfacts li', '.ctaband', '.yact',
+  '.fbwrap', 'section h2', '.intro', '.card', '.steps li', '.formwrap',
+  '.infogrid>div', '.mailin>*', '.tile', '.feat .f', '.yfacts li', '.yact',
 ].join(',');
 
 // Gentle fade-in for blocks as they scroll into view. Only touches CSS classes (rv / in).
