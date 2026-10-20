@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { site, whatsappLink } from '../config/site.js';
 
 const STARS = ['5', '4', '3', '2', '1'];
@@ -12,6 +12,14 @@ export default function FeedbackSection() {
   const [leaving, setLeaving] = useState(false);
   const [sent, setSent] = useState(false);
   const [url, setUrl] = useState('#');
+  const [videoOpen, setVideoOpen] = useState(false);
+
+  useEffect(() => {
+    if (!videoOpen) return undefined;
+    const onKeyDown = (e) => { if (e.key === 'Escape') setVideoOpen(false); };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [videoOpen]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -32,7 +40,11 @@ export default function FeedbackSection() {
           <h2>Share your feedback</h2>
           <p className="intro">Bought from us? Tell us how it went. Your feedback helps us improve and helps other buyers.</p>
           <div className="fb-thanks-art">
-            <img src="/images/feedback-thank-you.png" alt="Illustration of people sharing feedback" />
+            <button className="fb-video-trigger" type="button" aria-label="Open thank-you video" onClick={() => setVideoOpen(true)}>
+              <video autoPlay muted loop playsInline preload="auto" aria-hidden="true">
+                <source src="/videos/feedback-thank-you.mp4" type="video/mp4" />
+              </video>
+            </button>
             <h3>Thank you!</h3>
             <p>We look forward to hearing from you.</p>
           </div>
@@ -63,6 +75,14 @@ export default function FeedbackSection() {
           </div>
         </div>
       </div>
+      {videoOpen && (
+        <div className="media-modal" role="dialog" aria-modal="true" aria-label="Thank-you video" onClick={(e) => { if (e.target === e.currentTarget) setVideoOpen(false); }}>
+          <button className="media-modal-close" type="button" aria-label="Close video" onClick={() => setVideoOpen(false)}>&times;</button>
+          <video controls autoPlay playsInline>
+            <source src="/videos/feedback-thank-you.mp4" type="video/mp4" />
+          </video>
+        </div>
+      )}
     </section>
   );
 }
