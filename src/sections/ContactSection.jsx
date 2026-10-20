@@ -1,5 +1,5 @@
 import { site, mailtoLink, whatsappLink } from '../config/site.js';
-import { PhoneIcon, WhatsAppButtonIcon } from '../components/common/icons.jsx';
+import { MailIcon, PhoneIcon, WhatsAppButtonIcon } from '../components/common/icons.jsx';
 import { track } from '../utils/analytics.js';
 
 function MapEmbed() {
@@ -30,7 +30,7 @@ export default function ContactSection() {
             <a className="btn wa" href={whatsappLink(`Hello ${site.name}, I am interested in your construction services and would like to request a quotation.`)} target="_blank" rel="noopener noreferrer" onClick={() => track('whatsapp_click', { place: 'contact_video' })}>
               <WhatsAppButtonIcon />WhatsApp
             </a>
-            <a className="btn email" href={mailtoLink}>Email us</a>
+            <a className="btn email" href={mailtoLink}><MailIcon />Email us</a>
           </div>
         </div>
         <MapEmbed />

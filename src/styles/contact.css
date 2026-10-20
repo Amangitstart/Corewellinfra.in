@@ -16,7 +16,8 @@
 .mailicon{width:76px;height:76px;stroke:#fff;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;animation:float 3s ease-in-out infinite}
 @keyframes float{50%{transform:translateY(-6px)}}
 .mail p{opacity:.9;margin-top:12px}
-.mailbtns{display:flex;gap:12px;flex-wrap:wrap}
+.mailbtns{display:flex;gap:12px;flex-wrap:wrap;min-width:0}
+.mailbtns .btn{min-width:0;max-width:100%;box-sizing:border-box;overflow-wrap:anywhere}
 .btn.white{background:#fff;color:var(--red);border-color:#fff;box-shadow:none}
 .btn.white:hover{background:#111;color:#fff;border-color:#111}
 .mail .btn.ghost{box-shadow:none}
@@ -34,6 +35,8 @@
 .tile.in:hover{background:#0a66c2}
 @media(max-width:820px){
  .mailicon{width:56px;height:56px}
+ .mailbtns{width:100%;flex-direction:column}
+ .mailbtns .btn{width:100%;text-align:center}
  .social .tiles{grid-template-columns:1fr 1fr}
  .slant-t,.slant-b{margin-top:-6vw;padding-top:calc(72px + 6vw)}
  .slant-t{clip-path:polygon(0 6vw,100% 0,100% 100%,0 100%)}
