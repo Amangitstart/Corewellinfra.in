@@ -1,6 +1,6 @@
 /* Contact, email band, social tiles */
 /* contact */
-.contact-video-panel{position:relative;margin:28px auto 0;width:100%;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 12px 28px rgba(0,0,0,.12)}
+.contact-video-panel{position:relative;margin:0 auto;width:100%;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 12px 28px rgba(0,0,0,.12)}
 .contact-video-panel video{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;background:#fff}
 .contact-video-actions{position:absolute;right:24px;bottom:24px;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:10px}
 .contact-video-actions .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-width:150px}
@@ -8,6 +8,7 @@
 .contact-video-actions .email:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
 .contact-video-actions .btn svg{width:20px;height:20px;fill:currentColor}
 @media(max-width:700px){.contact-video-actions{position:static;padding:14px}.contact-video-actions .btn{flex:1;min-width:0}}
+#contact{padding-top:24px;padding-bottom:24px}
 /* email band */
 .mail{background:var(--red);color:#fff;padding:56px 0}
 .mail h2::after{background:#fff}

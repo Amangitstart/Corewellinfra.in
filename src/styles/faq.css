@@ -1,6 +1,6 @@
 /* FAQ */
 /* FAQ */
-#faq{background:#fff}
+#faq{background:#fff;padding-bottom:24px}
 .faq{margin-top:30px;max-width:780px;border-top:1px solid var(--line)}
 .faq details{border-bottom:1px solid var(--line)}
 .faq summary{list-style:none;cursor:pointer;padding:18px 44px 18px 0;font-weight:600;font-size:1.05rem;position:relative}
@@ -10,4 +10,3 @@
 .faq details p{padding:0 44px 20px 0;color:var(--grey);animation:faqin .25s ease}
 @keyframes faqin{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 .faq p a{color:var(--red);font-weight:600}
-
