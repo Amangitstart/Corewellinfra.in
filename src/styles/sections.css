@@ -68,7 +68,6 @@ footer{background:#0c0c0c;color:#999;text-align:center;padding:22px 0;font-size:
 .callbox{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
 .callbox .btn{display:inline-flex;align-items:center;gap:10px}
 .callbox .btn svg{width:20px;height:20px;fill:#fff}
-.infogrid .callbox{flex-direction:column;gap:10px;max-width:260px}.infogrid .callbox .btn{justify-content:center;width:100%;box-sizing:border-box}
 .callbox .wa{background:#0f7b3c;border-color:#0f7b3c;box-shadow:0 8px 20px rgba(37,211,102,.3)}
 .modal{position:fixed;inset:0;z-index:120;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;padding:20px}
 .modal.open{display:flex}

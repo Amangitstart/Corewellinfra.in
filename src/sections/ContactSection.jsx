@@ -32,39 +32,22 @@ function MapEmbed() {
 }
 
 export default function ContactSection() {
-  const [line1, line2] = site.address.lines;
   return (
     <section id="contact">
       <div className="wrap info">
         <h2>Call or visit us</h2>
-        <div className="infogrid">
-          <div><h3>Address</h3><p>{site.name}<br />{line1}<br />{line2}</p></div>
-          <div><h3>Email</h3><p><a className="em" href={mailtoLink}>{site.email}</a></p></div>
-          <div>
-            <h3>Phone</h3>
-            <p><a href={`tel:${site.phone}`}>{site.phoneDisplay}</a></p>
-            <div className="callbox">
-              <a className="btn" href={`tel:${site.phone}`}><PhoneIcon />Call now</a>
-              <a className="btn wa" href={whatsappLink(`Hello ${site.name}, I am interested in your construction services and would like to request a quotation.
-               Please share your pricing and availability. Thank you..`)} target="_blank" rel="noopener noreferrer" onClick={() => track('whatsapp_click', { place: 'page' })}>
-                <WhatsAppButtonIcon />Chat on WhatsApp
-              </a>
-            </div>
-          </div>
-        </div>
-        <a
-          className="contact-video-link"
-          href={whatsappLink(`Hello ${site.name}, I watched your project video and would like to discuss a construction project.`)}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Watch the video and contact us on WhatsApp"
-          onClick={() => track('whatsapp_click', { place: 'contact_video' })}
-        >
+        <div className="contact-video-panel">
           <video autoPlay muted loop playsInline preload="auto" aria-hidden="true">
             <source src="/videos/feedback-thank-you.mp4" type="video/mp4" />
           </video>
-          <span>Tap to contact us on WhatsApp</span>
-        </a>
+          <div className="contact-video-actions" aria-label="Contact options">
+            <a className="btn" href={`tel:${site.phone}`}><PhoneIcon />Call now</a>
+            <a className="btn wa" href={whatsappLink(`Hello ${site.name}, I am interested in your construction services and would like to request a quotation.`)} target="_blank" rel="noopener noreferrer" onClick={() => track('whatsapp_click', { place: 'contact_video' })}>
+              <WhatsAppButtonIcon />WhatsApp
+            </a>
+            <a className="btn email" href={mailtoLink}>Email us</a>
+          </div>
+        </div>
         <MapEmbed />
         <p className="mapnote"><a className="btn more" href={site.mapsLink} target="_blank" rel="noopener noreferrer">Open in Google Maps</a></p>
       </div>
