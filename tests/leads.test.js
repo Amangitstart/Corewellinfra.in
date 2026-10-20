@@ -19,9 +19,9 @@ function fakeClient(responder) {
   };
 }
 
-test('row contains only name, phone and location (no id or created_at)', () => {
+test('row contains only full_name, phone and location (no id or created_at)', () => {
   const row = buildLeadRow(lead);
-  assert.deepEqual(Object.keys(row).sort(), ['location', 'name', 'phone']);
+  assert.deepEqual(Object.keys(row).sort(), ['full_name', 'location', 'phone']);
   assert.equal('id' in row || 'created_at' in row, false);
 });
 
@@ -39,13 +39,13 @@ test('a security error is a failure, never a success', async () => {
   assert.equal(JSON.stringify(getLastLeadError()).includes('Ramesh'), false); // no customer data in debug info
 });
 
-test('retries once with full_name when the table has no "name" column', async () => {
-  const client = fakeClient((row) => ('name' in row
-    ? { error: { code: 'PGRST204', message: "Could not find the 'name' column of 'leads' in the schema cache" }, status: 400 }
+test('retries once with name when the table has no "full_name" column', async () => {
+  const client = fakeClient((row) => ('full_name' in row
+    ? { error: { code: 'PGRST204', message: "Could not find the 'full_name' column of 'leads' in the schema cache" }, status: 400 }
     : { error: null, status: 201 }));
   assert.deepEqual(await submitLead(lead, client), { ok: true });
   assert.equal(client.inserted.length, 2);
-  assert.ok('full_name' in client.inserted[1].row);
+  assert.ok('name' in client.inserted[1].row);
 });
 
 test('missing configuration fails safely', async () => {
