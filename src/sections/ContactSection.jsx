@@ -52,6 +52,19 @@ export default function ContactSection() {
             </div>
           </div>
         </div>
+        <a
+          className="contact-video-link"
+          href={whatsappLink(`Hello ${site.name}, I watched your project video and would like to discuss a construction project.`)}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Watch the video and contact us on WhatsApp"
+          onClick={() => track('whatsapp_click', { place: 'contact_video' })}
+        >
+          <video autoPlay muted loop playsInline preload="auto" aria-hidden="true">
+            <source src="/videos/feedback-thank-you.mp4" type="video/mp4" />
+          </video>
+          <span>Tap to contact us on WhatsApp</span>
+        </a>
         <MapEmbed />
         <p className="mapnote"><a className="btn more" href={site.mapsLink} target="_blank" rel="noopener noreferrer">Open in Google Maps</a></p>
       </div>

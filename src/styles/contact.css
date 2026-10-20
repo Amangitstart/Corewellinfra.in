@@ -3,6 +3,10 @@
 .infogrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;margin-top:28px}.infogrid a.em{font:700 1.05rem Montserrat,sans-serif;word-break:break-all}
 .infogrid h3{margin:0 0 6px;font-size:1.05rem;color:var(--red)}
 .infogrid a{font:800 1.5rem Montserrat,sans-serif}
+.contact-video-link{display:block;position:relative;margin:34px auto 0;max-width:760px;border-radius:16px;overflow:hidden;background:#111;box-shadow:0 12px 28px rgba(0,0,0,.12);text-decoration:none}
+.contact-video-link video{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;background:#fff}
+.contact-video-link span{position:absolute;right:16px;bottom:16px;padding:9px 14px;border-radius:999px;background:rgba(15,123,60,.92);color:#fff;font-size:.9rem;font-weight:700;box-shadow:0 5px 14px rgba(0,0,0,.2)}
+.contact-video-link:focus-visible{outline:3px solid var(--red);outline-offset:4px}
 /* email band */
 .mail{background:var(--red);color:#fff;padding:56px 0}
 .mail h2::after{background:#fff}
@@ -34,4 +38,3 @@
  .slant-t{clip-path:polygon(0 6vw,100% 0,100% 100%,0 100%)}
  .slant-b{clip-path:polygon(0 0,100% 6vw,100% 100%,0 100%)}
 }
-
