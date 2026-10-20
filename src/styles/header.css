@@ -5,9 +5,9 @@
 .strip a{color:#fff;font-weight:500}
 header{position:sticky;top:0;padding-top:env(safe-area-inset-top,0px);z-index:30;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
-.logo{display:flex;align-items:center;gap:12px;flex:0 0 auto}
-.brand-mark{display:block;width:62px;height:62px;object-fit:cover;object-position:center;border-radius:8px;background:#252525}
-.brand-name{font-size:1.38rem;font-weight:800;color:var(--red);line-height:1.05;letter-spacing:.16em}
+.logo{display:flex;align-items:center;gap:14px;min-width:260px;flex:0 0 auto}
+.brand-mark{display:block;width:68px;height:68px;object-fit:cover;object-position:center;border-radius:9px;background:#252525;box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.brand-name{font-size:1.42rem;font-weight:800;color:var(--red);line-height:1.05;letter-spacing:.16em;white-space:nowrap}
 .brand-name small{display:block;font-size:.57rem;letter-spacing:.3em;color:var(--grey);font-weight:500;margin-top:6px}
 header nav ul{display:flex;gap:28px;list-style:none;font-weight:500}
 header nav a:hover{color:var(--red)}
