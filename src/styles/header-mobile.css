@@ -20,5 +20,4 @@ header nav ul{gap:22px}
  header nav ul{flex-direction:column;gap:0;padding:8px 20px}
  header nav li a{display:block;padding:14px 0;border-bottom:1px solid var(--line)}
 }
-@media(max-width:420px){.hcta{padding:9px 12px;font-size:.88rem}.logo{font-size:1.1rem}}
-
+@media(max-width:420px){.hcta{padding:9px 12px;font-size:.88rem}.logo img{width:145px}}

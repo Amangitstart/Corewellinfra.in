@@ -34,8 +34,8 @@ export default function Header() {
   return (
     <header className={scrolled ? 'scrolled' : ''}>
       <div className="wrap">
-        <Link to={{ pathname: '/', hash: '#home' }} className="logo">
-          {site.shortName}<small>{site.logoSubtitle}</small>
+        <Link to={{ pathname: '/', hash: '#home' }} className="logo" aria-label={`${site.name} home`}>
+          <img src="/logo.svg" alt={site.name} />
         </Link>
         <nav id="nav" aria-label="Main" ref={navRef} className={menuOpen ? 'open' : ''} onClick={(e) => { if (e.target.tagName === 'A') setMenuOpen(false); }}>
           <ul>
