@@ -38,7 +38,7 @@ Copy `.env.example` to `.env` and fill in:
 | `VITE_SUPABASE_PUBLISHABLE_KEY` | Yes | Supabase > Project Settings > API Keys > **Publishable key** (`sb_publishable_...`) or the older **anon** key |
 | `VITE_SITE_URL` | Before launch | Your final address, like `https://yourdomain.com` (no slash at the end). Used for Google tags and the sitemap. |
 | `VITE_GA_MEASUREMENT_ID` | No | Google Analytics ID. Leave empty to keep analytics and the cookie banner **off**. |
-| `VITE_LEADS_NAME_COLUMN` | No | `name` (default) or `full_name`, whichever your leads table uses. |
+| `VITE_LEADS_NAME_COLUMN` | No | `full_name` (default) or `name`, whichever your leads table uses. |
 
 **Safety rules**
 - The publishable key is made for browsers. It can only do what your database security rules allow.
