@@ -112,33 +112,12 @@ export const clientPhotos = [
   }
 ];
 
-export const stockPhotos = {
-  red: '/images/red.jpg',
-  grey: '/images/grey.jpg',
-  yard: '/images/yard.jpg',
-};
-
 // Hero slideshow (home page top).
 export const heroSlides = [
   { src: '/images/multi-storey-building-under-construction.jpg', position: 'center 60%' },
-  { src: stockPhotos.red },
-  { src: stockPhotos.grey },
-  { src: stockPhotos.yard, position: 'center 70%' },
-];
-
-// "Our work" slider.
-export const workSlides = [
-  { src: stockPhotos.red, title: 'Red paver blocks', text: 'Stacked and ready to load' },
-  { src: stockPhotos.grey, title: 'Grey paver blocks', text: 'Bulk stock for roads and parking' },
-  { src: stockPhotos.yard, title: 'Loading and delivery', text: 'Tractor-trolley dispatch from our yard', position: 'center 65%' },
+  { src: '/images/hero-road-paving.jpg', position: 'center center' },
+  { src: '/images/hero-backhoe-sunset.png', position: 'center center' },
 ];
 
 export const projectsIntro = { title: "Our projects", text: "Buildings, foundations and site work from our recent jobs." };
 export const clientsIntro = { title: "Clients who worked with us", text: "We meet clients at our office and on site, and we stay in touch after the job." };
-
-// Photos in the "View all photos" viewer.
-export const stockViewerPhotos = workSlides.map((w) => ({
-  src: w.src,
-  alt: w.title,
-  caption: `${w.title}: ${w.text}`,
-}));
