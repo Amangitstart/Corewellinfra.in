@@ -34,7 +34,10 @@
 .tile.yt:hover{background:#e00}
 .tile.in:hover{background:#0a66c2}
 @media(max-width:820px){
+ .mail{padding:40px 0}
+ .mailin{grid-template-columns:1fr;gap:18px;align-items:start}
  .mailicon{width:56px;height:56px}
+ .mailin>div{min-width:0}
  .mailbtns{width:100%;flex-direction:column}
  .mailbtns .btn{width:100%;text-align:center}
  .social .tiles{grid-template-columns:1fr 1fr}

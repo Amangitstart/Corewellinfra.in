@@ -31,6 +31,7 @@ footer{background:#0c0c0c;color:#999;text-align:center;padding:22px 0;font-size:
 
 
 @media(max-width:820px){
+ section{padding:48px 0}
  .menu{display:block}
  header nav{position:absolute;left:0;right:0;top:68px;background:#fff;border-bottom:1px solid var(--line);display:none}
  header nav.open{display:block}
