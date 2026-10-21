@@ -2,7 +2,7 @@
 
 export const services = [
   {
-    title: "Building construction",
+    title: "Building & Construction",
     text: "Construction of buildings, on our own account or on a fee or contract basis.",
     icon: (
       <>
@@ -11,7 +11,7 @@ export const services = [
     ),
   },
   {
-    title: "Roads and civil work",
+    title: "Civil Engineering & Infrastructure",
     text: "Construction and maintenance of roads, streets, highways, bridges, tunnels and subways.",
     icon: (
       <>
@@ -20,7 +20,7 @@ export const services = [
     ),
   },
   {
-    title: "Real estate",
+    title: "Real Estate Development",
     text: "Real estate activities with own or leased property, and on a fee or contract basis.",
     icon: (
       <>

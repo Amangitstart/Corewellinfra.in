@@ -38,7 +38,7 @@ export const mailtoLink = `mailto:${site.email}?subject=${encodeURIComponent(`En
 
 // Short list printed on the business card.
 export const cardServices = [
-  'Building construction',
-  'Roads and civil work',
-  'Real estate',
+  'Building & Construction',
+  'Civil Engineering & Infrastructure',
+  'Real Estate Development',
 ];
