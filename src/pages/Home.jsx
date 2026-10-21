@@ -4,7 +4,6 @@ import ProjectsSection from '../sections/ProjectsSection.jsx';
 import QuoteSection from '../sections/QuoteSection.jsx';
 import ClientsSection from '../sections/ClientsSection.jsx';
 import FeedbackSection from '../sections/FeedbackSection.jsx';
-import EmailSection from '../sections/EmailSection.jsx';
 import usePageMeta from '../hooks/usePageMeta.js';
 import useScrollReveal from '../hooks/useScrollReveal.js';
 import { site } from '../config/site.js';
@@ -21,7 +20,6 @@ export default function Home() {
       <ClientsSection />
       <QuoteSection />
       <FeedbackSection />
-      <EmailSection />
     </main>
   );
 }
