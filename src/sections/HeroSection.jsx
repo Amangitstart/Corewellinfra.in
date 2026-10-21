@@ -32,7 +32,7 @@ export default function HeroSection() {
       )}
       <div className="wrap">
         <h1>Building the <em>Future.</em><br />Engineering <em>Excellence.</em></h1>
-        <p>Building and road construction, paver blocks, sand and gravel, and equipment rental from Corewell Infra Developers, Varanasi. Tell us what you need and we will send a quote.</p>
+        <p>At Corewell Infra Developers, we are committed to building a better future through real estate development, construction, and infrastructure projects. We specialize in property investment opportunities, construction services, and the execution of government Tenders and private tenders.</p>
         <div className="actions">
           <a className="btn quote-btn" href="#quote">Get a Quote</a>
           <a className="btn ghost" href="#services">View Services</a>
