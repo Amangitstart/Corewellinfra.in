@@ -3,7 +3,7 @@ import { site } from '../config/site.js';
 
 export default function YardSection() {
   return (
-    <section className="dark slant-t" id="yard">
+    <section className="yard" id="yard">
       <div className="wrap">
         <h2>{yardIntro.title}</h2>
         <p className="intro">{yardIntro.text}</p>
