@@ -32,8 +32,6 @@ export default function FeedbackSection() {
           <p className="intro">Bought from us? Tell us how it went. Your feedback helps us improve and helps other buyers.</p>
           <div className="fb-thanks-art">
             <img src="/images/feedback-thank-you.png" alt="Thank you illustration about sharing feedback" />
-            <h3>Thank you!</h3>
-            <p>We look forward to hearing from you.</p>
           </div>
         </div>
         <div className="fbwrap">
