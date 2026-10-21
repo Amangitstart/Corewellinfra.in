@@ -1,0 +1,19 @@
+/* Small local FAQ assistant above the floating contact actions. */
+.site-chatbot{position:fixed;right:16px;bottom:calc(220px + env(safe-area-inset-bottom,0px));z-index:90}
+.chat-launch{width:60px;height:60px;border:0;border-radius:50%;background:var(--ink);color:var(--bg);font-size:1.55rem;line-height:1;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.3);transition:transform .15s,background .2s}
+.chat-launch:hover{transform:scale(1.08);background:var(--red);color:#fff}
+.chat-panel{position:absolute;right:0;bottom:72px;width:min(360px,calc(100vw - 32px));overflow:hidden;border:1px solid var(--line);border-radius:16px;background:var(--surface);color:var(--ink);box-shadow:0 16px 44px rgba(0,0,0,.3)}
+.chat-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:16px;background:var(--ink);color:var(--bg)}
+.chat-heading strong,.chat-heading span{display:block}.chat-heading span{margin-top:3px;font-size:.78rem;opacity:.78}
+.chat-close{border:0;background:transparent;color:inherit;font-size:1.5rem;line-height:1;cursor:pointer}
+.chat-messages{display:flex;flex-direction:column;gap:9px;max-height:250px;overflow:auto;padding:14px}
+.chat-message{max-width:88%;margin:0;padding:9px 11px;border-radius:12px;background:var(--surface-soft);font-size:.86rem;line-height:1.45}
+.chat-message.user{align-self:flex-end;background:var(--red);color:#fff}
+.chat-suggestions{display:flex;gap:6px;overflow:auto;padding:0 14px 12px}
+.chat-suggestions button{flex:none;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--ink);padding:6px 9px;font:500 .72rem Poppins,sans-serif;cursor:pointer}
+.chat-suggestions button:hover{border-color:var(--red);color:var(--red)}
+.chat-form{display:flex;gap:7px;padding:12px 14px;border-top:1px solid var(--line)}
+.chat-form input{min-width:0;padding:9px 10px}.chat-form button{border:0;border-radius:6px;background:var(--red);color:#fff;padding:0 13px;font:600 .82rem Poppins,sans-serif;cursor:pointer}
+html[data-theme="dark"] .chat-heading{background:#fff;color:#111}
+@media(max-width:820px){.site-chatbot{right:16px;bottom:calc(196px + env(safe-area-inset-bottom,0px))}.chat-launch{width:56px;height:56px}.chat-panel{bottom:68px}}
+@media(max-width:420px){.chat-panel{width:calc(100vw - 24px);right:-4px}}
