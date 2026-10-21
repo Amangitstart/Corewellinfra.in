@@ -5,5 +5,18 @@
   --red:#c63a2b;
   --red-dark:#a52e21;
   --grey:#5b5b5b;
-  --line:#e2ded8
+  --line:#e2ded8;
+  --bg:#fff;
+  --surface:#fff;
+  --surface-soft:#f6f4f1
+}
+
+html[data-theme="dark"] {
+  --ink:#f4f1ed;
+  --paper:#181818;
+  --grey:#c1bdb7;
+  --line:#3d3a36;
+  --bg:#111;
+  --surface:#202020;
+  --surface-soft:#292929
 }

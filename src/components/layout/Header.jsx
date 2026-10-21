@@ -8,6 +8,11 @@ export default function Header() {
   const { pathname } = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    const saved = window.localStorage.getItem('corewell-theme');
+    return saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
   const navRef = useRef(null);
   const menuRef = useRef(null);
   const ids = useMemo(() => navLinks.map((l) => l.id), []);
@@ -19,6 +24,11 @@ export default function Header() {
     onScroll();
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = darkMode ? 'dark' : 'light';
+    window.localStorage.setItem('corewell-theme', darkMode ? 'dark' : 'light');
+  }, [darkMode]);
 
   // Close the mobile menu on outside click or Escape.
   useEffect(() => {
@@ -54,6 +64,10 @@ export default function Header() {
           </ul>
         </nav>
         <div className="hright">
+          <button className="theme-toggle" type="button" onClick={() => setDarkMode((enabled) => !enabled)} aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}>
+            <span aria-hidden="true">{darkMode ? '☀' : '☾'}</span>
+            <span className="theme-label">{darkMode ? 'Light' : 'Dark'}</span>
+          </button>
           <Link className="btn hcta" to={{ pathname: '/', hash: '#quote' }} onClick={() => track('cta_click', { place: 'header' })}>Get a quote</Link>
           <button
             ref={menuRef}
