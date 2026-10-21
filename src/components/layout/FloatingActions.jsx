@@ -1,11 +1,26 @@
+import { useEffect, useState } from 'react';
 import { site, whatsappLink } from '../../config/site.js';
 import { PhoneIcon, WhatsAppFloatIcon } from '../common/icons.jsx';
 import { track } from '../../utils/analytics.js';
 
 // The round WhatsApp and Call buttons that stay on screen.
 export default function FloatingActions() {
+  const [darkMode, setDarkMode] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    const saved = window.localStorage.getItem('corewell-theme');
+    return saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = darkMode ? 'dark' : 'light';
+    window.localStorage.setItem('corewell-theme', darkMode ? 'dark' : 'light');
+  }, [darkMode]);
+
   return (
     <div className="float">
+      <button className="theme-toggle" type="button" onClick={() => setDarkMode((enabled) => !enabled)} aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}>
+        <span aria-hidden="true">{darkMode ? '☀' : '☾'}</span>
+      </button>
       <a
         className="wa"
         href={whatsappLink(`Hello ${site.name}, I want a quote for paver blocks.`)}
