@@ -1,7 +1,6 @@
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import { site } from './src/config/site.js';
-import { faqs } from './src/data/faqs.js';
 
 // Adds the canonical link, social image and Google business data to index.html.
 // They need your final web address, so they are only added when VITE_SITE_URL is set.
@@ -24,22 +23,12 @@ function seoTags(siteUrl) {
       addressCountry: site.address.country,
     },
   };
-  const faqData = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map((f) => ({
-      '@type': 'Question',
-      name: f.q,
-      acceptedAnswer: { '@type': 'Answer', text: f.a ?? `${f.before}${f.link.text}${f.after}` },
-    })),
-  };
   const json = (o) => JSON.stringify(o).replace(/</g, '\\u003c');
   return [
     `<link rel="canonical" href="${siteUrl}/" />`,
     `<meta property="og:url" content="${siteUrl}/" />`,
     `<meta property="og:image" content="${siteUrl}${site.ogImage}" />`,
     `<script type="application/ld+json">${json(businessData)}</script>`,
-    `<script type="application/ld+json">${json(faqData)}</script>`,
   ].join('\n    ');
 }
 

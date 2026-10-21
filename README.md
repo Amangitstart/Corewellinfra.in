@@ -121,7 +121,7 @@ git push -u origin main
 public/            files served as they are (photos in public/images, favicon)
 src/
   config/          site.js = phone, email, address (edit here); env.js = settings
-  data/            text and photo lists: services, products, faqs, photos
+  data/            text and photo lists: services, photos
   sections/        one file per home page section (Hero, Services, Quote, FAQ...)
   components/
     layout/        header, footer, floating buttons, cookie banner
@@ -139,7 +139,7 @@ tests/             automatic tests
 
 **Common edits**
 - Phone, email, address: `src/config/site.js`
-- Services text: `src/data/services.jsx`. FAQ: `src/data/faqs.js`. Products: `src/data/products.js`
+- Services text: `src/data/services.jsx`
 - Add a photo: copy it to `public/images`, add a line in `src/data/photos.js`
 - Colours: `src/styles/variables.css`
 - Policy text: `src/pages/legal/`. Please have them reviewed before relying on them.
