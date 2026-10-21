@@ -1,5 +1,4 @@
 import HeroSection from '../sections/HeroSection.jsx';
-import FeaturesStrip from '../sections/FeaturesStrip.jsx';
 import ServicesSection from '../sections/ServicesSection.jsx';
 import ProjectsSection from '../sections/ProjectsSection.jsx';
 import QuoteSection from '../sections/QuoteSection.jsx';
@@ -17,11 +16,10 @@ export default function Home() {
   return (
     <main id="main">
       <HeroSection />
-      <FeaturesStrip />
       <ServicesSection />
       <ProjectsSection />
-      <QuoteSection />
       <ClientsSection />
+      <QuoteSection />
       <FeedbackSection />
       <EmailSection />
     </main>

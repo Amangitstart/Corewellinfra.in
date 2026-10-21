@@ -48,4 +48,4 @@ export const services = [
   },
 ];
 
-export const servicesIntro = { title: "What we do", text: "Construction, materials and equipment from one local company. Tell us your job and we will quote." };
+export const servicesIntro = { title: "What we deliver", text: "Construction, materials and equipment from one local company. Tell us your job and we will quote." };

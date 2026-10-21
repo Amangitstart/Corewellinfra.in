@@ -1,5 +1,4 @@
 import { services, servicesIntro } from '../data/services.jsx';
-import { site, whatsappLink } from '../config/site.js';
 
 export default function ServicesSection() {
   return (
@@ -16,14 +15,6 @@ export default function ServicesSection() {
               <a className="clink" href="#quote">Get a quote <span aria-hidden="true">&rarr;</span></a>
             </div>
           ))}
-          <div className="card talk">
-            <h3>Not sure what you need?</h3>
-            <p>Call us or message on WhatsApp and we will help you choose.</p>
-            <div className="tbtns">
-              <a className="btn" href={`tel:${site.phone}`}>Call now</a>
-              <a className="btn wa" href={whatsappLink(`Hello ${site.name}, I need some help.`)} target="_blank" rel="noopener noreferrer">WhatsApp</a>
-            </div>
-          </div>
         </div>
       </div>
     </section>
