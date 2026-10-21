@@ -12,7 +12,8 @@ img{display:block;max-width:100%}
 
 .btn{display:block;box-shadow:0 8px 20px rgba(198,58,43,.28);transition:transform .15s,background .2s;text-align:center;padding:16px 28px;border-radius:6px;font-weight:700;font-size:1.05rem;border:2px solid var(--red);background:var(--red);color:#fff;cursor:pointer;font-family:inherit}
 .btn:hover{background:var(--red-dark);border-color:var(--red-dark);transform:translateY(-2px)}
+.btn.quote-btn{background:#111;border-color:#111;color:#fff;box-shadow:0 8px 20px rgba(0,0,0,.2)}
+.btn.quote-btn:hover{background:#000;border-color:#000}
 .btn.ghost,.btn.more{box-shadow:none}
 .btn.ghost{background:transparent;border-color:#fff}
 .btn.ghost:hover{background:#fff;color:var(--ink)}
-

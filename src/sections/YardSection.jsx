@@ -13,7 +13,7 @@ export default function YardSection() {
           ))}
         </ul>
         <p className="yact">
-          <a className="btn" href="#quote">Get a quote</a>
+          <a className="btn quote-btn" href="#quote">Get a quote</a>
           <a className="btn more" href={`tel:${site.phone}`}>Call now</a>
         </p>
       </div>
