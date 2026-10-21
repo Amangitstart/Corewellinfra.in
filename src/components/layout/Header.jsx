@@ -1,7 +1,6 @@
 import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { navLinks, site } from '../../config/site.js';
-import { LocationIcon } from '../common/icons.jsx';
 import useScrollSpy from '../../hooks/useScrollSpy.js';
 import { track } from '../../utils/analytics.js';
 
@@ -52,14 +51,6 @@ export default function Header() {
                     {link.label}
                   </Link>
                 </li>
-                {link.id === 'contact' && (
-                  <li className="location-nav-item">
-                    <a className="location-link" href={site.mapsLink} target="_blank" rel="noopener noreferrer" aria-label="Open Corewell location in Google Maps" title="Open location in Google Maps">
-                      <LocationIcon />
-                      <span>Location</span>
-                    </a>
-                  </li>
-                )}
               </Fragment>
             ))}
           </ul>

@@ -5,14 +5,11 @@
 @import './hero.css';
 @import './sections.css';
 @import './quote-form.css';
-@import './contact.css';
 @import './feedback.css';
 @import './header-mobile.css';
 @import './lead-form.css';
-@import './faq.css';
 @import './footer-cookie.css';
 @import './legal.css';
-@import './map-whatsapp.css';
 @import './photos.css';
 @import './business-card.css';
 @import './ux-features.css';
@@ -20,4 +17,3 @@
 @import './lightbox.css';
 @import './not-found.css';
 @import './theme.css';
-@import './chatbot.css';

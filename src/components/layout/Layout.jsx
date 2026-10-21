@@ -6,7 +6,6 @@ import Footer from './Footer.jsx';
 import FloatingActions from './FloatingActions.jsx';
 import CookieBanner from './CookieBanner.jsx';
 import ContactActionModal from './ContactActionModal.jsx';
-import SiteChatbot from './SiteChatbot.jsx';
 
 // The frame around every page: top bar, header, footer and the always-visible buttons.
 export default function Layout() {
@@ -20,7 +19,6 @@ export default function Layout() {
       <Footer />
       <CookieBanner />
       <FloatingActions />
-      <SiteChatbot />
       <ContactActionModal />
     </>
   );

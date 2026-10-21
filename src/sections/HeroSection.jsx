@@ -35,7 +35,7 @@ export default function HeroSection() {
         <p>Building and road construction, paver blocks, sand and gravel, and equipment rental from Corewell Infra Developers, Varanasi. Tell us what you need and we will send a quote.</p>
         <div className="actions">
           <a className="btn quote-btn" href="#quote">Get a Quote</a>
-          <a className="btn ghost" href="#products">View Products</a>
+          <a className="btn ghost" href="#services">View Services</a>
         </div>
       </div>
       {count > 1 && (

@@ -12,7 +12,6 @@ html[data-theme="dark"] .modal .box,
 html[data-theme="dark"] .pf,
 html[data-theme="dark"] .project-video,
 html[data-theme="dark"] .contact-video-panel{background:var(--surface)}
-html[data-theme="dark"] #faq{background:var(--bg)}
 html[data-theme="dark"] input,
 html[data-theme="dark"] select,
 html[data-theme="dark"] textarea{background:#171717;color:var(--ink);border-color:var(--line)}

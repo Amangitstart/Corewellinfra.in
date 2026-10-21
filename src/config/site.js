@@ -21,8 +21,6 @@ export const site = {
     lines: ['Arazi No. 19, Mahesh Nagar Colony,', 'Nawalpur, Shivpur, Varanasi 221003'],
     short: 'Mahesh Nagar Colony, Shivpur, Varanasi 221003',
   },
-  mapsLink: 'https://maps.app.goo.gl/CLYd3cqrGq9Ksk7u9',
-  mapsEmbed: 'https://www.google.com/maps?cid=15168383991020543191&z=16&output=embed',
   ogImage: '/images/red.jpg',
 };
 
@@ -30,10 +28,7 @@ export const navLinks = [
   { id: 'home', label: 'Home' },
   { id: 'services', label: 'Services' },
   { id: 'projects', label: 'Projects' },
-  { id: 'products', label: 'Products' },
-  { id: 'faq', label: 'FAQ' },
   { id: 'feedback', label: 'Feedback' },
-  { id: 'contact', label: 'Contact' },
 ];
 
 export const whatsappLink = (text) =>
