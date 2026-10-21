@@ -20,15 +20,6 @@ export const services = [
     ),
   },
   {
-    title: "Building materials",
-    text: "Paver blocks, sand, gravel and other construction materials and equipment, supplied in bulk.",
-    icon: (
-      <>
-        <path d="M3 7h8v5H3zM13 7h8v5h-8zM8 12h8v5H8zM3 17h4M17 17h4"/>
-      </>
-    ),
-  },
-  {
     title: "Real estate",
     text: "Real estate activities with own or leased property, and on a fee or contract basis.",
     icon: (
@@ -37,15 +28,6 @@ export const services = [
       </>
     ),
   },
-  {
-    title: "Equipment rental",
-    text: "Construction and civil-engineering machinery and equipment on rent, without operator.",
-    icon: (
-      <>
-        <circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/>
-      </>
-    ),
-  },
 ];
 
-export const servicesIntro = { title: "What we deliver", text: "Construction, materials and equipment from one local company. Tell us your job and we will quote." };
+export const servicesIntro = { title: "What we deliver", text: "Construction, civil infrastructure and real estate development from one trusted company. Tell us your project and we will quote." };

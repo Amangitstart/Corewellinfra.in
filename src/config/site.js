@@ -40,7 +40,5 @@ export const mailtoLink = `mailto:${site.email}?subject=${encodeURIComponent(`En
 export const cardServices = [
   'Building construction',
   'Roads and civil work',
-  'Paver blocks, sand and gravel',
   'Real estate',
-  'Equipment rental',
 ];

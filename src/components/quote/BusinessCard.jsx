@@ -17,7 +17,7 @@ export default function BusinessCard() {
   const canShare = typeof navigator.share === 'function';
 
   const siteUrl = (SITE_URL || window.location.origin) + '/';
-  const message = `${site.name} - construction, paver blocks and building materials in Varanasi. Call ${site.phoneDisplay}. Our website: ${siteUrl}`;
+  const message = `${site.name} - construction, real estate and infrastructure in Varanasi. Call ${site.phoneDisplay}. Our website: ${siteUrl}`;
 
   // Make the PNG once and keep it, so Share can start instantly inside the tap (iPhone needs this).
   const getPng = () => {

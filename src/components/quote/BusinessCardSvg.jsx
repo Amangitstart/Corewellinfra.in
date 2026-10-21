@@ -24,7 +24,7 @@ export default function BusinessCardSvg({ svgRef }) {
         <text x="60" y="110" fontSize="64" fontWeight="800" letterSpacing="6" fill="#fff">{site.shortName.toUpperCase()}</text>
         <rect x="60" y="128" width="90" height="6" fill="#c63a2b" />
         <text x="60" y="172" fontSize="24" letterSpacing="7" fill="#bdb7ae">{site.logoSubtitle}</text>
-        <text x="60" y="226" fontSize="22" fill="#e8e4de">Construction &#183; Building materials &#183; Equipment</text>
+        <text x="60" y="226" fontSize="22" fill="#e8e4de">Construction &#183; Real Estate &#183; Infrastructure</text>
         <text x="60" y="296" fontSize="18" fontWeight="700" letterSpacing="4" fill="#ff7a66">WHAT WE DO</text>
         <g fill="#fff" fontSize="26">
           {cardServices.map((label, i) => (
