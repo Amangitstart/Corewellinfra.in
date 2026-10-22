@@ -29,7 +29,7 @@ export default function Terms() {
       <h2>Law</h2>
       <p>These terms are governed by Indian law. Courts at Varanasi have jurisdiction, subject to any rights you have under law.</p>
       <h2>Contact</h2>
-      <p>Questions? Call <a href="tel:+918533861394">+91 8533861394</a> or email <a href="mailto:hello@corewellinfra.in">hello@corewellinfra.in</a>. See also our <Link to={ROUTES.privacy}>Privacy Policy</Link> and <Link to={ROUTES.refunds}>Refund and Cancellation Policy</Link>.</p>
+      <p>Questions? Call <a href="tel:+918533861394">+91 8533861394</a> or email <a href="mailto:corewellinfradevelopers@gmail.com">corewellinfradevelopers@gmail.com</a>. See also our <Link to={ROUTES.privacy}>Privacy Policy</Link> and <Link to={ROUTES.refunds}>Refund and Cancellation Policy</Link>.</p>
     </LegalPage>
   );
 }

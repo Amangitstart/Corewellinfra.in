@@ -11,7 +11,7 @@ export const site = {
   phone: '+918533861394', // used in tel: links
   phoneDisplay: '+91 8533861394',
   whatsappNumber: '918533861394', // country code + number, no + or spaces
-  email: 'hello@corewellinfra.in',
+  email: 'corewellinfradevelopers@gmail.com',
   address: {
     street: 'Arazi No. 19, Mahesh Nagar Colony, Nawalpur, Shivpur',
     locality: 'Varanasi',

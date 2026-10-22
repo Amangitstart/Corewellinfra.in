@@ -8,7 +8,7 @@ export default function PrivacyPolicy() {
       <p>This policy explains what happens to your details when you use the Corewell Infra Developers website and send us an enquiry. We keep it short and plain on purpose.</p>
 
       <h2>Who we are</h2>
-      <p>Corewell Infra Developers, Arazi No. 19, Mahesh Nagar Colony, Nawalpur, Shivpur, Varanasi 221003, India. Phone: <a href="tel:+918533861394">+91 8533861394</a>. Email: <a href="mailto:hello@corewellinfra.in">hello@corewellinfra.in</a>.</p>
+      <p>Corewell Infra Developers, Arazi No. 19, Mahesh Nagar Colony, Nawalpur, Shivpur, Varanasi 221003, India. Phone: <a href="tel:+918533861394">+91 8533861394</a>. Email: <a href="mailto:corewellinfradevelopers@gmail.com">corewellinfradevelopers@gmail.com</a>.</p>
 
       <h2>What we collect and why</h2>
       <table>
@@ -57,7 +57,7 @@ export default function PrivacyPolicy() {
       <p>If we change this policy we will update the date at the top of this page.</p>
 
       <h2>Contact and complaints</h2>
-      <p>Questions or complaints about your details? Call <a href="tel:+918533861394">+91 8533861394</a> or email <a href="mailto:hello@corewellinfra.in">hello@corewellinfra.in</a>.</p>
+      <p>Questions or complaints about your details? Call <a href="tel:+918533861394">+91 8533861394</a> or email <a href="mailto:corewellinfradevelopers@gmail.com">corewellinfradevelopers@gmail.com</a>.</p>
     </LegalPage>
   );
 }
