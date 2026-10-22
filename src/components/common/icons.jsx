@@ -32,8 +32,8 @@ export function WhatsAppButtonIcon() {
 export function MailIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M3 5.5h18v13H3z" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-      <path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+      <path d="M2.5 5.5a2 2 0 0 1 2-2h15a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2h-15a2 2 0 0 1-2-2z" fill="#fff" />
+      <path d="m3.5 5.5 8.5 6.5 8.5-6.5" fill="none" stroke="#ea4335" strokeWidth="1.8" strokeLinejoin="round" />
     </svg>
   );
 }

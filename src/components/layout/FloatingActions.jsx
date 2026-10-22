@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { mailtoLink, site, whatsappLink } from '../../config/site.js';
+import { gmailComposeLink, site, whatsappLink } from '../../config/site.js';
 import { MailIcon, PhoneIcon, WhatsAppFloatIcon } from '../common/icons.jsx';
 import { track } from '../../utils/analytics.js';
 
@@ -32,7 +32,7 @@ export default function FloatingActions() {
         <WhatsAppFloatIcon />
       </a>
       <a className="ph" href={`tel:${site.phone}`} aria-label="Call us"><PhoneIcon /></a>
-      <a className="em" href={mailtoLink} aria-label={`Email us at ${site.email}`}><MailIcon /></a>
+      <a className="em" href={gmailComposeLink} target="_blank" rel="noopener noreferrer" aria-label={`Email us at ${site.email}`} onClick={() => track('email_click', { place: 'floating' })}><MailIcon /></a>
     </div>
   );
 }
