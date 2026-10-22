@@ -3,7 +3,7 @@
 // so NEVER put a secret or service_role key in any VITE_ variable.
 
 export const SUPABASE_URL = (import.meta.env?.VITE_SUPABASE_URL || '').trim();
-export const SUPABASE_FUNCTION_URL = (import.meta.env?.VITE_SUPABASE_FUNCTION_URL || (SUPABASE_URL ? `${SUPABASE_URL}/functions/v1/submit-lead` : '')).replace(/\/+$/, '');
+export const SUPABASE_PUBLISHABLE_KEY = (import.meta.env?.VITE_SUPABASE_PUBLISHABLE_KEY || '').trim();
 export const TURNSTILE_SITE_KEY = (import.meta.env?.VITE_TURNSTILE_SITE_KEY || '').trim();
 export const SITE_URL = (import.meta.env?.VITE_SITE_URL || '').trim().replace(/\/+$/, '');
 export const GA_MEASUREMENT_ID = (import.meta.env?.VITE_GA_MEASUREMENT_ID || '').trim();

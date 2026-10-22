@@ -35,15 +35,14 @@ Copy `.env.example` to `.env` and fill in:
 | Name | Required | What to put |
 |---|---|---|
 | `VITE_SUPABASE_URL` | Yes | Supabase > Project Settings > API > **Project URL** |
-| `VITE_SUPABASE_PUBLISHABLE_KEY` | No longer used | Lead submissions now go through the Edge Function; do not add a database key to the browser build. |
+| `VITE_SUPABASE_PUBLISHABLE_KEY` | Yes | Supabase browser-safe publishable key (or older anon key). Never use a secret/service-role key. |
 | `VITE_SITE_URL` | Before launch | Your final address, like `https://yourdomain.com` (no slash at the end). Used for Google tags and the sitemap. |
 | `VITE_GA_MEASUREMENT_ID` | No | Google Analytics ID. Leave empty to keep analytics and the cookie banner **off**. |
 | `VITE_LEADS_NAME_COLUMN` | No | `full_name` (default) or `name`, whichever your leads table uses. |
 
 **Safety rules**
-- Lead submissions go through `supabase/functions/submit-lead` and do not expose a database key to the browser.
+- Lead submissions use the browser-safe Supabase publishable key and never expose a secret/service-role key.
 - **Never** put the **secret** key or the **service_role** key in this project, in `.env`, or in any `VITE_` variable.
-- Configure `SUPABASE_SERVICE_ROLE_KEY` and `TURNSTILE_SECRET_KEY` only as Supabase Edge Function secrets.
 - `.env` is ignored by Git, so it is never uploaded to GitHub. Only `.env.example` (with fake values) is uploaded.
 
 ## 3. Check your Supabase security (important)
@@ -61,31 +60,13 @@ Since 30 May 2026 new Supabase tables are not open to the browser until you gran
 The website **adds** leads only. It never reads them back, so visitors cannot see anyone's details.
 You read your leads in **Supabase > Table Editor > leads**.
 
-## 4. Deploy the trusted lead function
+## 4. Optional Edge Function hardening
 
-The browser submits to supabase/functions/submit-lead, not directly to the database. Deploy it with the Supabase CLI from the project root:
+The browser form currently submits directly with the publishable key. The Edge Function under `supabase/functions/submit-lead` is optional hardening; it requires its own server-side secrets and Turnstile configuration before it can be used.
 
     supabase functions deploy submit-lead
 
-Configure these Supabase Edge Function secrets with supabase secrets set or in the Supabase dashboard under Edge Functions > Secrets:
-
-| Secret | Purpose |
-|---|---|
-| SUPABASE_URL | Supabase project URL |
-| SUPABASE_SERVICE_ROLE_KEY | Server-only database access; never put this in Vite or frontend variables |
-| TURNSTILE_SECRET_KEY | Cloudflare Turnstile server verification secret |
-| ALLOWED_ORIGINS | Comma-separated final HTTPS website origins |
-
-The frontend/hosting provider needs only browser-safe variables:
-
-- VITE_SUPABASE_URL
-- VITE_TURNSTILE_SITE_KEY
-- VITE_SITE_URL
-- optionally VITE_SUPABASE_FUNCTION_URL if the default Supabase function URL is not used
-
-Create the Turnstile site key in the Cloudflare Turnstile dashboard and add the site key to the hosting provider. Add only the matching secret key to Supabase. The function rejects submissions until Turnstile, origin allowlisting, rate-limit SQL, and the required secrets are configured.
-
-The migration in supabase/migrations/202610230001_leads_hardening.sql is review-only. Apply it to staging first and do not apply it to production without approval.
+If you switch the browser to this function, configure `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `TURNSTILE_SECRET_KEY`, and `ALLOWED_ORIGINS` as Edge Function secrets, plus `VITE_TURNSTILE_SITE_KEY` in the frontend. Do not apply the hardening migration to the current direct-submit setup without also changing the client path, because it revokes anonymous INSERT access.
 
 ## 5. Test the lead form
 
@@ -137,7 +118,7 @@ git push -u origin main
 | Install Command | `npm install` |
 | Node.js Version | 20.x or 22.x |
 
-3. Open **Environment Variables** and add the browser-safe names from section 2: `VITE_SUPABASE_URL`, `VITE_TURNSTILE_SITE_KEY`, and `VITE_SITE_URL`. Add `VITE_SUPABASE_FUNCTION_URL` only if the function is hosted at a non-default URL.
+3. Open **Environment Variables** and add the browser-safe names from section 2: `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`, and `VITE_SITE_URL`.
 4. Click **Deploy**. Every later `git push` updates the live site automatically.
 5. Add your domain in **Settings > Domains**, then set `VITE_SITE_URL` to it and redeploy.
 
