@@ -30,4 +30,4 @@ export const services = [
   },
 ];
 
-export const servicesIntro = { title: "What we deliver", text: "Construction, civil infrastructure and real estate development from one trusted company. Tell us your project and we will quote." };
+export const servicesIntro = { title: "What we deliver", text: "Construction, civil infrastructure and real estate development from one trusted company." };

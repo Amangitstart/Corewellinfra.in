@@ -128,5 +128,5 @@ export const heroSlides = [
   { src: '/images/hero-backhoe-sunset.png', position: 'center center' },
 ];
 
-export const projectsIntro = { title: "Projects and development", text: "Buildings, foundations and site work from our recent jobs." };
+export const projectsIntro = { title: "Projects and Development", text: "Buildings, foundations and site work from our recent jobs." };
 export const clientsIntro = { title: "Trusted by our clients", text: "We meet clients at our office and on site, and we stay in touch after the job." };
