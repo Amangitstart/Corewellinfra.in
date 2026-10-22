@@ -2,10 +2,10 @@ import { ROUTES } from '../../config/routes.js';
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import BusinessCard from './BusinessCard.jsx';
+import Turnstile from './Turnstile.jsx';
 import { site, whatsappLink } from '../../config/site.js';
 import { normalizePhone } from '../../utils/phone.js';
-import { submitLead, getLastLeadError } from '../../lib/leads.js';
-import { warmSupabase } from '../../lib/supabase.js';
+import { submitLead } from '../../lib/leads.js';
 import { track } from '../../utils/analytics.js';
 import { prefersReducedMotion } from '../../hooks/usePrefersReducedMotion.js';
 
@@ -15,15 +15,6 @@ const ERROR_TEXT = {
   location: 'Enter your location',
 };
 const GENERIC_ERROR = 'Sorry, we could not send your details just now. Please try again, or send them on WhatsApp or call us.';
-
-// Testing aid: add ?debug=1 to the page address to see the real reason a save failed.
-// The text never contains the visitor's name or phone.
-function debugText() {
-  if (!/[?&]debug=1(&|$)/.test(window.location.search)) return '';
-  const e = getLastLeadError();
-  if (!e) return '';
-  return ` [debug: ${[e.http, e.code, e.message].filter(Boolean).join(' | ')}${e.hint ? ` | hint: ${e.hint}` : ''}]`;
-}
 
 function validate(values) {
   const errors = {};
@@ -41,6 +32,7 @@ export default function LeadForm() {
   const [showFallback, setShowFallback] = useState(false);
   const [status, setStatus] = useState('idle'); // idle | sending | leaving | sent
   const [donePhone, setDonePhone] = useState('');
+  const [turnstileToken, setTurnstileToken] = useState('');
   const sendingRef = useRef(false); // blocks double submits even before React re-renders
   const refs = { name: useRef(null), phone: useRef(null), location: useRef(null) };
   const doneRef = useRef(null);
@@ -67,17 +59,17 @@ export default function LeadForm() {
     sendingRef.current = true;
     setStatus('sending');
     try {
-      const result = await submitLead({ name: values.name.trim(), phone: phone.value, location: values.location.trim() });
+      const result = await submitLead({ name: values.name.trim(), phone: phone.value, location: values.location.trim(), turnstileToken });
       if (result.ok) {
         setDonePhone(phone.display);
-        track('generate_lead', { city: values.location.trim() });
+        track('generate_lead');
         setStatus('leaving');
         setTimeout(() => setStatus('sent'), 450);
       } else {
         setStatus('idle');
         setFormError(result.reason === 'rate_limit'
           ? 'Too many tries from your connection. Please wait a few minutes, or contact us on WhatsApp.'
-          : GENERIC_ERROR + debugText());
+          : GENERIC_ERROR);
         setShowFallback(true);
       }
     } catch (error) {
@@ -109,7 +101,6 @@ export default function LeadForm() {
         style={status === 'sent' ? { display: 'none' } : undefined}
         aria-busy={sending}
         onSubmit={onSubmit}
-        onFocusCapture={warmSupabase}
       >
         <div className="hp" aria-hidden="true">
           <label htmlFor="fWeb">Leave this field empty</label>
@@ -134,6 +125,7 @@ export default function LeadForm() {
         <p className="req-note" style={{ margin: '2px 0 0' }}>
           By sending, you agree we may call or WhatsApp you about this enquiry. See our <Link to={ROUTES.privacy}>Privacy Policy</Link>.
         </p>
+        <Turnstile onToken={setTurnstileToken} />
         <div className={`errbox${formError ? ' show' : ''}`} id="fErr" role="alert">{formError}</div>
         <p className="errfb" id="fFallback" hidden={!showFallback}>
           <a className="btn" href={whatsappHref} target="_blank" rel="noopener noreferrer">Send on WhatsApp instead</a>

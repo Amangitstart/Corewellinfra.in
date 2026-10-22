@@ -35,14 +35,15 @@ Copy `.env.example` to `.env` and fill in:
 | Name | Required | What to put |
 |---|---|---|
 | `VITE_SUPABASE_URL` | Yes | Supabase > Project Settings > API > **Project URL** |
-| `VITE_SUPABASE_PUBLISHABLE_KEY` | Yes | Supabase > Project Settings > API Keys > **Publishable key** (`sb_publishable_...`) or the older **anon** key |
+| `VITE_SUPABASE_PUBLISHABLE_KEY` | No longer used | Lead submissions now go through the Edge Function; do not add a database key to the browser build. |
 | `VITE_SITE_URL` | Before launch | Your final address, like `https://yourdomain.com` (no slash at the end). Used for Google tags and the sitemap. |
 | `VITE_GA_MEASUREMENT_ID` | No | Google Analytics ID. Leave empty to keep analytics and the cookie banner **off**. |
 | `VITE_LEADS_NAME_COLUMN` | No | `full_name` (default) or `name`, whichever your leads table uses. |
 
 **Safety rules**
-- The publishable key is made for browsers. It can only do what your database security rules allow.
-- **Never** put the **secret** key or the **service_role** key in this project, in `.env`, or in Vercel's `VITE_` variables.
+- Lead submissions go through `supabase/functions/submit-lead` and do not expose a database key to the browser.
+- **Never** put the **secret** key or the **service_role** key in this project, in `.env`, or in any `VITE_` variable.
+- Configure `SUPABASE_SERVICE_ROLE_KEY` and `TURNSTILE_SECRET_KEY` only as Supabase Edge Function secrets.
 - `.env` is ignored by Git, so it is never uploaded to GitHub. Only `.env.example` (with fake values) is uploaded.
 
 ## 3. Check your Supabase security (important)
@@ -60,21 +61,48 @@ Since 30 May 2026 new Supabase tables are not open to the browser until you gran
 The website **adds** leads only. It never reads them back, so visitors cannot see anyone's details.
 You read your leads in **Supabase > Table Editor > leads**.
 
-## 4. Test the lead form
+## 4. Deploy the trusted lead function
+
+The browser submits to supabase/functions/submit-lead, not directly to the database. Deploy it with the Supabase CLI from the project root:
+
+    supabase functions deploy submit-lead
+
+Configure these Supabase Edge Function secrets with supabase secrets set or in the Supabase dashboard under Edge Functions > Secrets:
+
+| Secret | Purpose |
+|---|---|
+| SUPABASE_URL | Supabase project URL |
+| SUPABASE_SERVICE_ROLE_KEY | Server-only database access; never put this in Vite or frontend variables |
+| TURNSTILE_SECRET_KEY | Cloudflare Turnstile server verification secret |
+| ALLOWED_ORIGINS | Comma-separated final HTTPS website origins |
+
+The frontend/hosting provider needs only browser-safe variables:
+
+- VITE_SUPABASE_URL
+- VITE_TURNSTILE_SITE_KEY
+- VITE_SITE_URL
+- optionally VITE_SUPABASE_FUNCTION_URL if the default Supabase function URL is not used
+
+Create the Turnstile site key in the Cloudflare Turnstile dashboard and add the site key to the hosting provider. Add only the matching secret key to Supabase. The function rejects submissions until Turnstile, origin allowlisting, rate-limit SQL, and the required secrets are configured.
+
+The migration in supabase/migrations/202610230001_leads_hardening.sql is review-only. Apply it to staging first and do not apply it to production without approval.
+
+## 5. Test the lead form
 
 1. Open the site, fill the quote form and press **Request a call back**.
 2. You should see "Thank you!" and the business card.
 3. In Supabase open **Table Editor > leads**. A new row should be there. Delete test rows afterwards.
 
-If it says "Sorry, we could not send...", add `?debug=1` to the end of the page address (for example `http://localhost:5173/?debug=1`) and submit again.
-A grey line then shows the real reason, for example:
+If it says "Sorry, we could not send...", check the browser's network connection and the Supabase configuration. The public form intentionally shows only a generic error and never exposes database diagnostics.
+
+For trusted troubleshooting, inspect the Supabase Edge Function logs without copying customer data into logs or support tickets. Common server-side causes include:
 
 | Message | Meaning and fix |
 |---|---|
 | `42501 permission denied for table leads` | Run `grant insert on public.leads to anon;` (see section 3). |
 | `42501 new row violates row-level security policy` | The INSERT policy does not allow `anon`. Create it (step 3 in the SQL file). |
 | `PGRST204 Could not find the ... column` | Column names differ. The site already retries with the other spelling (`name` / `full_name`). If it still fails, check your column names. |
-| `Invalid API key` | Check `VITE_SUPABASE_PUBLISHABLE_KEY`. |
+| `Service unavailable` | Configure the Supabase Edge Function secrets and endpoint before testing. |
 | `Failed to fetch` | The browser could not reach Supabase (no internet, ad blocker, wrong URL). |
 | `23514 ... check constraint` | A database rule rejected the value, for example a phone format. |
 
@@ -109,7 +137,7 @@ git push -u origin main
 | Install Command | `npm install` |
 | Node.js Version | 20.x or 22.x |
 
-3. Open **Environment Variables** and add the names from section 2 (at least `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY`; add `VITE_SITE_URL` once you know the domain).
+3. Open **Environment Variables** and add the browser-safe names from section 2: `VITE_SUPABASE_URL`, `VITE_TURNSTILE_SITE_KEY`, and `VITE_SITE_URL`. Add `VITE_SUPABASE_FUNCTION_URL` only if the function is hosted at a non-default URL.
 4. Click **Deploy**. Every later `git push` updates the live site automatically.
 5. Add your domain in **Settings > Domains**, then set `VITE_SITE_URL` to it and redeploy.
 

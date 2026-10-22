@@ -1,5 +1,4 @@
-import { getSupabase } from './supabase.js';
-import { LEADS_NAME_COLUMN } from '../config/env.js';
+import { LEADS_NAME_COLUMN, SUPABASE_FUNCTION_URL } from '../config/env.js';
 
 const TABLE = 'leads';
 const TIMEOUT_MS = 15000;
@@ -41,10 +40,11 @@ function describeFailure(res) {
  * Otherwise { ok: false, reason } where reason is 'config' | 'rate_limit' | 'failed'.
  */
 export async function submitLead(lead, injectedClient) {
-  const supabase = injectedClient === undefined ? await getSupabase() : injectedClient;
+  if (injectedClient === undefined) return submitLeadViaFunction(lead);
+  const supabase = injectedClient;
   if (!supabase) {
-    lastError = { message: 'Supabase is not configured (missing VITE_SUPABASE_URL or VITE_SUPABASE_PUBLISHABLE_KEY)' };
-    console.error('Lead not sent:', lastError.message);
+    lastError = { message: 'Lead submission endpoint is not configured' };
+    console.error('Lead not sent: submission endpoint is not configured');
     return { ok: false, reason: 'config' };
   }
 
@@ -65,4 +65,37 @@ export async function submitLead(lead, injectedClient) {
   lastError = describeFailure(res);
   console.error('Lead insert failed', lastError);
   return { ok: false, reason: res.status === 429 ? 'rate_limit' : 'failed' };
+}
+
+async function submitLeadViaFunction({ name, phone, location, turnstileToken }) {
+  if (!SUPABASE_FUNCTION_URL) {
+    lastError = { message: 'Lead submission endpoint is not configured' };
+    console.error('Lead submission unavailable: endpoint is not configured');
+    return { ok: false, reason: 'config' };
+  }
+
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
+  try {
+    const response = await fetch(SUPABASE_FUNCTION_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, phone, location, turnstileToken }),
+      signal: controller.signal,
+      credentials: 'omit',
+    });
+    let payload = null;
+    try { payload = await response.json(); } catch { /* generic failure below */ }
+    if (response.ok && payload?.ok === true) {
+      lastError = null;
+      return { ok: true };
+    }
+    lastError = { http: response.status || null, code: payload?.code || null, message: null, hint: null };
+    return { ok: false, reason: response.status === 429 ? 'rate_limit' : response.status === 503 ? 'config' : 'failed' };
+  } catch (error) {
+    lastError = { http: null, code: error?.name === 'AbortError' ? 'TIMEOUT' : 'NETWORK', message: null, hint: null };
+    return { ok: false, reason: 'failed' };
+  } finally {
+    clearTimeout(timer);
+  }
 }

@@ -1,6 +1,7 @@
 -- Corewell Infra Developers: leads table security check and setup.
 -- Run in Supabase > SQL Editor. Safe to run more than once.
--- The website only needs to ADD rows. Visitors must never be able to read, change or delete them.
+-- The Edge Function adds rows with its server-only service_role key.
+-- Anonymous visitors must never be able to read, add, change or delete rows directly.
 
 -- 1. LOOK FIRST: columns, security, policies and permissions for the public role.
 select
@@ -15,18 +16,17 @@ select
 -- A healthy result:
 --   columns : id, created_at, name (or full_name), phone, location
 --   rls_enabled : true
---   policies : exactly one INSERT policy for anon (or public). NO select / update / delete policy.
---   grants : anon: INSERT   (and nothing more)
+--   policies : no anon/authenticated policies. NO select / update / delete policy.
+--   grants : service_role: INSERT (and nothing for anon/authenticated)
 
 -- 2. FIX the usual cause of "permission denied for table leads".
 --    Since 30 May 2026 new Supabase projects do not open new tables to the browser automatically.
 alter table public.leads enable row level security;
-grant insert on public.leads to anon;
-revoke select, update, delete on public.leads from anon;
+revoke insert, select, update, delete on public.leads from anon, authenticated;
+grant insert on public.leads to service_role;
 
--- 3. Only if step 1 showed NO insert policy for anon. If a policy with this name already exists, skip this.
--- create policy "allow_public_lead_submission" on public.leads
---   for insert to anon with check (true);
+-- 3. Remove any old direct-browser insert policy. Review the policy name first:
+-- drop policy if exists "allow_public_lead_submission" on public.leads;
 
 -- 4. OPTIONAL hardening: the database rejects junk even if someone calls the API directly.
 --    Adjust "name" to "full_name" if that is your column. Run once; it fails harmlessly if already added.

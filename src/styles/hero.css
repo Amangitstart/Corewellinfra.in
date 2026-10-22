@@ -1,6 +1,6 @@
 /* Hero slideshow */
 /* hero slideshow */
-.hero{position:relative;min-height:calc(100svh - 110px);min-height:calc(100vh - 110px);color:#fff;display:flex;align-items:center;overflow:hidden;background:#222}
+.hero{position:relative;min-height:calc(100svh - 110px);min-height:calc(100vh - 110px);color:#fff;display:flex;align-items:center;overflow:hidden;overflow:clip;background:#222}
 .slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1s ease}
 .slide.on{opacity:1;animation:zoom 9s ease-out forwards}
 @keyframes zoom{from{transform:scale(1)}to{transform:scale(1.08)}}
@@ -16,4 +16,3 @@
 .dots{position:absolute;bottom:26px;left:0;right:0;z-index:3;display:flex;justify-content:center;gap:10px}
 .dots button{width:44px;height:5px;border:0;background:rgba(255,255,255,.4);cursor:pointer;padding:0}
 .dots button.on{background:#fff}
-

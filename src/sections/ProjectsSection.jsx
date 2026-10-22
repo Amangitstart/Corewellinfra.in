@@ -15,7 +15,7 @@ export default function ProjectsSection() {
         <div className="project-videos" aria-label="Project videos">
           {projectVideos.map((video) => (
             <article className="project-video" key={video.src}>
-              <video controls preload="metadata" playsInline>
+              <video controls preload="none" playsInline>
                 <source src={video.src} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>

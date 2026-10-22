@@ -11,11 +11,14 @@ export default function FeedbackSection() {
   const [error, setError] = useState('');
   const [leaving, setLeaving] = useState(false);
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
   const [url, setUrl] = useState('#');
   const onSubmit = (e) => {
     e.preventDefault();
+    if (sending || sent) return;
     if (!name.trim() || !message.trim() || !rating) { setError('Please add your name, a rating and your feedback'); return; }
     setError('');
+    setSending(true);
     const stars = '\u2605'.repeat(Number(rating)) + '\u2606'.repeat(5 - Number(rating));
     const link = whatsappLink(`Feedback for ${site.name}\nName: ${name.trim()}\nRating: ${stars} (${rating}/5)\nFeedback: ${message.trim()}`);
     setUrl(link);
@@ -31,13 +34,13 @@ export default function FeedbackSection() {
           <h2>Share your feedback</h2>
           <p className="intro">Bought from us? Tell us how it went. Your feedback helps us improve and helps other buyers.</p>
           <div className="fb-thanks-art">
-            <img src="/images/feedback-thank-you.png" alt="Thank you illustration about sharing feedback" />
+            <img src="/images/feedback-thank-you.png" alt="Thank you illustration about sharing feedback" loading="lazy" decoding="async" />
           </div>
         </div>
         <div className="fbwrap">
           <form id="fbForm" noValidate className={leaving ? 'sent' : undefined} style={sent ? { display: 'none' } : undefined} onSubmit={onSubmit}>
             <label htmlFor="bName">Your name*</label>
-            <input id="bName" required autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} />
+            <input id="bName" required autoComplete="name" maxLength={80} value={name} onChange={(e) => setName(e.target.value)} />
             <label id="rateLbl">Your rating*</label>
             <div className="stars" role="radiogroup" aria-labelledby="rateLbl">
               {STARS.map((n) => (
@@ -48,9 +51,9 @@ export default function FeedbackSection() {
               ))}
             </div>
             <label htmlFor="bMsg">Your feedback*</label>
-            <textarea id="bMsg" rows={4} required value={message} onChange={(e) => setMessage(e.target.value)} />
+            <textarea id="bMsg" rows={4} required maxLength={1000} value={message} onChange={(e) => setMessage(e.target.value)} />
             <p className="err" id="bErr" role="alert">{error}</p>
-            <button className="btn" type="submit">Send feedback</button>
+            <button className="btn" type="submit" disabled={sending}>{sending ? 'Opening WhatsApp...' : 'Send feedback'}</button>
           </form>
           <div className={`done${sent ? ' show' : ''}`} id="bDone" aria-live="polite">
             <svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="23" /><path d="M15 27l8 8 14-16" /></svg>
