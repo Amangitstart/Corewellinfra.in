@@ -1,5 +1,4 @@
-// Turns the on-screen business card (an SVG) into a PNG, a PDF or a phone contact file.
-// Everything runs in the browser. No server and no extra libraries.
+// Turns the on-screen business card (an SVG) into a PNG in the browser.
 
 import { site } from '../config/site.js';
 
@@ -10,8 +9,8 @@ const SCALE = 2; // 2100 x 1200 pixels
 export const slugify = (text) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 export const cardFileName = (extension) => `business-card-${slugify(site.name)}.${extension}`;
 
-// Draws the SVG onto a canvas. "opaque" paints a white background (needed for PDF/JPEG).
-export function renderCard(svgElement, { opaque = false } = {}) {
+// Draws the SVG onto a canvas.
+function renderCard(svgElement) {
   return new Promise((resolve, reject) => {
     const copy = svgElement.cloneNode(true);
     copy.removeAttribute('id');
@@ -26,7 +25,6 @@ export function renderCard(svgElement, { opaque = false } = {}) {
         canvas.width = CARD_WIDTH * SCALE;
         canvas.height = CARD_HEIGHT * SCALE;
         const ctx = canvas.getContext('2d');
-        if (opaque) { ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, canvas.width, canvas.height); }
         ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
         resolve(canvas);
       } catch (error) { reject(error); }
@@ -40,45 +38,6 @@ export const canvasToBlob = (canvas, type, quality) =>
   new Promise((resolve, reject) => canvas.toBlob((b) => (b ? resolve(b) : reject(new Error('Could not create the file'))), type, quality));
 
 export const makePng = async (svg) => canvasToBlob(await renderCard(svg), 'image/png');
-
-// One-page PDF, 3.5 x 2 inch (252 x 144 pt), card image fills the page.
-export async function makePdf(svg) {
-  const canvas = await renderCard(svg, { opaque: true });
-  const jpeg = new Uint8Array(await (await canvasToBlob(canvas, 'image/jpeg', 0.95)).arrayBuffer());
-  const encoder = new TextEncoder();
-  const parts = [];
-  const offsets = [];
-  let length = 0;
-  const add = (x) => { const bytes = typeof x === 'string' ? encoder.encode(x) : x; parts.push(bytes); length += bytes.length; };
-  const object = (n, body) => { offsets[n] = length; add(`${n} 0 obj\n${body}\nendobj\n`); };
-  const content = 'q 252 0 0 144 0 0 cm /Im0 Do Q';
-  add('%PDF-1.4\n');
-  object(1, '<< /Type /Catalog /Pages 2 0 R >>');
-  object(2, '<< /Type /Pages /Kids [3 0 R] /Count 1 >>');
-  object(3, '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 252 144] /Resources << /XObject << /Im0 5 0 R >> >> /Contents 4 0 R >>');
-  object(4, `<< /Length ${content.length} >>\nstream\n${content}\nendstream`);
-  offsets[5] = length;
-  add(`5 0 obj\n<< /Type /XObject /Subtype /Image /Width ${canvas.width} /Height ${canvas.height} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${jpeg.length} >>\nstream\n`);
-  add(jpeg);
-  add('\nendstream\nendobj\n');
-  object(6, `<< /Title (${site.name} business card) >>`);
-  const xrefAt = length;
-  let table = 'xref\n0 7\n0000000000 65535 f \n';
-  for (let i = 1; i <= 6; i += 1) table += `${String(offsets[i]).padStart(10, '0')} 00000 n \n`;
-  add(`${table}trailer\n<< /Size 7 /Root 1 0 R /Info 6 0 R >>\nstartxref\n${xrefAt}\n%%EOF\n`);
-  return new Blob(parts, { type: 'application/pdf' });
-}
-
-export function makeVCard() {
-  const a = site.address;
-  const esc = (t) => t.replace(/,/g, '\\,');
-  const lines = [
-    'BEGIN:VCARD', 'VERSION:3.0', `FN:${site.name}`, 'N:;;;;', `ORG:${site.name}`, 'X-ABShowAs:COMPANY',
-    `TEL;TYPE=WORK,VOICE:${site.phone}`, `EMAIL;TYPE=WORK:${site.email}`,
-    `ADR;TYPE=WORK:;;${esc(a.street)};${a.locality};Uttar Pradesh;${a.postalCode};India`, 'END:VCARD',
-  ];
-  return new Blob([lines.join('\r\n')], { type: 'text/vcard' });
-}
 
 export function downloadBlob(blob, fileName) {
   const link = document.createElement('a');
