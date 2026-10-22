@@ -6,7 +6,7 @@ import { ROUTES } from '../../config/routes.js';
 export default function LegalPage({ title, description, path, updated, children }) {
   usePageMeta({ title, description, path });
   return (
-    <main className="legal" id="main" style={{ background: '#fff' }}>
+    <main className="legal" id="main">
       <Link className="legal-back" to={ROUTES.home}>&larr; Back to home</Link>
       <h1>{title}</h1>
       <p className="upd">Last updated: {updated}</p>
