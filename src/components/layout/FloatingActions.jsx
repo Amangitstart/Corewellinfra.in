@@ -16,6 +16,23 @@ export default function FloatingActions() {
     window.localStorage.setItem('corewell-theme', darkMode ? 'dark' : 'light');
   }, [darkMode]);
 
+  const whatsappMessage = `Hello ${site.name} Team,
+
+I am interested in purchasing paver blocks and would appreciate a quotation.
+
+Please share the following details:
+- Available designs and specifications
+- Price per square foot/unit
+- Minimum order quantity
+- Delivery availability and charges
+
+My details:
+Name:
+Location:
+Required quantity:
+
+Thank you.`;
+
   return (
     <div className="float">
       <button className="theme-toggle" type="button" onClick={() => setDarkMode((enabled) => !enabled)} aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}>
@@ -23,7 +40,7 @@ export default function FloatingActions() {
       </button>
       <a
         className="wa"
-        href={whatsappLink(`Hello ${site.name}, I want a quote for paver blocks.`)}
+        href={whatsappLink(whatsappMessage)}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"
