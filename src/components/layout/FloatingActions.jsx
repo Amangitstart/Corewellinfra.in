@@ -17,21 +17,7 @@ export default function FloatingActions() {
   }, [darkMode]);
 
   const whatsappMessage = `Hello ${site.name} Team,
-
-I am interested in purchasing paver blocks and would appreciate a quotation.
-
-Please share the following details:
-- Available designs and specifications
-- Price per square foot/unit
-- Minimum order quantity
-- Delivery availability and charges
-
-My details:
-Name:
-Location:
-Required quantity:
-
-Thank you.`;
+I am enquiring about your services and would like more information.`;
 
   return (
     <div className="float">
