@@ -2,8 +2,8 @@
 .float .theme-toggle{width:60px;height:60px;padding:0;border:1px solid var(--line);border-radius:50%;background:var(--surface);color:var(--ink);font:600 1.35rem Poppins,sans-serif;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.25);transition:transform .15s,background .2s}
 .float .theme-toggle:hover{background:var(--surface-soft);border-color:var(--red);transform:scale(1.08)}
 
-html[data-theme="dark"] header{background:rgba(17,17,17,.94)}
-html[data-theme="dark"] header nav{background:var(--surface)}
+html[data-theme="dark"] header{background:#111111}
+html[data-theme="dark"] header nav{background:#111111}
 html[data-theme="dark"] .logo:hover{background:rgba(255,255,255,.08)}
 html[data-theme="dark"] .card,
 html[data-theme="dark"] form,
