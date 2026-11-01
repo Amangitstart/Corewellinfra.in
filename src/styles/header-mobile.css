@@ -15,7 +15,7 @@ header nav ul{gap:22px}
 .menu[aria-expanded=true] span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
 @media(max-width:960px){
  .menu{display:block}
- header nav{position:absolute;left:0;right:0;top:calc(68px + env(safe-area-inset-top,0px));background:#fff;border-bottom:1px solid var(--line);display:none;box-shadow:0 12px 24px rgba(0,0,0,.08)}
+ header nav{position:absolute;left:0;right:0;top:calc(68px + env(safe-area-inset-top,0px));transform:none;background:#fff;border-bottom:1px solid var(--line);display:none;box-shadow:0 12px 24px rgba(0,0,0,.08)}
  header nav.open{display:block}
  header nav ul{flex-direction:column;gap:0;padding:8px 20px}
  header nav li a{display:block;padding:14px 0;border-bottom:1px solid var(--line)}

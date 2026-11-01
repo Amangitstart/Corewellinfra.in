@@ -4,7 +4,7 @@
 .strip .wrap{display:flex;justify-content:space-between;gap:12px;padding-top:8px;padding-bottom:8px}
 .strip a{color:#fff;font-weight:500}
 header{position:sticky;top:0;padding-top:env(safe-area-inset-top,0px);z-index:30;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+header .wrap{position:relative;display:flex;align-items:center;justify-content:space-between;height:68px}
 .logo{display:flex;align-items:center;gap:14px;min-width:260px;flex:0 0 auto;padding:4px 10px 4px 4px;margin-left:-4px;border-radius:14px;transition:background-color .2s ease,transform .2s ease}
 .logo:hover{background:rgba(198,58,43,.07);transform:translateY(-1px)}
 .logo:focus-visible{outline:3px solid var(--red);outline-offset:3px}
@@ -12,7 +12,8 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;heigh
 .logo:hover .brand-mark{transform:scale(1.04);box-shadow:0 5px 14px rgba(0,0,0,.18)}
 .brand-name{font-size:1.42rem;font-weight:800;color:var(--red);line-height:1.05;letter-spacing:.16em;white-space:nowrap}
 .brand-name small{display:block;font-size:.57rem;letter-spacing:.3em;color:var(--grey);font-weight:500;margin-top:6px}
-header nav ul{display:flex;gap:28px;list-style:none;font-weight:500}
+header nav{position:absolute;left:50%;transform:translateX(-50%)}
+header nav ul{display:flex;justify-content:center;gap:28px;list-style:none;font-weight:500}
 header nav a:hover{color:var(--red)}
 .location-link{display:inline-flex;align-items:center;gap:5px;color:var(--red);font-weight:600}
 .location-link svg{width:18px;height:18px;flex:none}
