@@ -34,9 +34,6 @@ export const navLinks = [
 export const whatsappLink = (text) =>
   `https://wa.me/${site.whatsappNumber}${text ? `?text=${encodeURIComponent(text)}` : ''}`;
 
-export const mailtoLink = `mailto:${site.email}?subject=${encodeURIComponent(`Enquiry for ${site.name}`)}`;
-export const gmailComposeLink = `https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=${encodeURIComponent(site.email)}&su=${encodeURIComponent(`Enquiry for ${site.name}`)}`;
-
 // Short list printed on the business card.
 export const cardServices = [
   'Building & Construction',
