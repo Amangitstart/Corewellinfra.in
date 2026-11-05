@@ -41,8 +41,8 @@ export function WhatsAppFloatIcon() {
 export function WhatsAppButtonIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path style={{ fill: 'none' }} d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.3A9.5 9.5 0 1 0 12 2.5z" stroke="#fff" strokeWidth="1.8" strokeLinejoin="round" />
-      <path style={{ fill: '#fff' }} d="M8.6 8.4c.3 3 3.2 5.9 6.4 6.7l1.5-1.5-2-1-.9.9c-1-.4-2-1.4-2.4-2.4l.9-.9-1-2z" />
+      <path style={{ fill: 'none' }} d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.3A9.5 9.5 0 1 0 12 2.5z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+      <path style={{ fill: 'currentColor' }} d="M8.6 8.4c.3 3 3.2 5.9 6.4 6.7l1.5-1.5-2-1-.9.9c-1-.4-2-1.4-2.4-2.4l.9-.9-1-2z" />
     </svg>
   );
 }
