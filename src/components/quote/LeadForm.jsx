@@ -8,6 +8,7 @@ import { normalizePhone } from '../../utils/phone.js';
 import { submitLead } from '../../lib/leads.js';
 import { track } from '../../utils/analytics.js';
 import { prefersReducedMotion } from '../../hooks/usePrefersReducedMotion.js';
+import { UserIcon, PhoneIcon, LocationIcon, BriefcaseIcon } from '../common/icons.jsx';
 
 const ERROR_TEXT = {
   name: 'Enter your full name',
@@ -26,7 +27,7 @@ function validate(values) {
 }
 
 export default function LeadForm() {
-  const [values, setValues] = useState({ name: '', phone: '', location: '', website: '' });
+  const [values, setValues] = useState({ name: '', phone: '', location: '', projectType: '', website: '' });
   const [errors, setErrors] = useState({});
   const [formError, setFormError] = useState('');
   const [showFallback, setShowFallback] = useState(false);
@@ -90,7 +91,7 @@ export default function LeadForm() {
   }, [status]);
 
   const sending = status === 'sending';
-  const whatsappHref = whatsappLink(`Quote request - ${site.name}\nName: ${values.name.trim()}\nPhone: ${values.phone.trim()}\nLocation: ${values.location.trim()}`);
+  const whatsappHref = whatsappLink(`Quote request - ${site.name}\nName: ${values.name.trim()}\nPhone: ${values.phone.trim()}\nLocation: ${values.location.trim()}${values.projectType ? `\nProject type: ${values.projectType}` : ''}`);
 
   return (
     <>
@@ -108,19 +109,42 @@ export default function LeadForm() {
         </div>
 
         <label htmlFor="fName">Full Name*</label>
-        <input id="fName" ref={refs.name} className={errors.name ? 'bad' : undefined} required autoComplete="name" autoCapitalize="words" enterKeyHint="next" maxLength={80}
-          value={values.name} onChange={change('name')} aria-invalid={errors.name ? 'true' : undefined} aria-describedby="e_fName" />
+        <div className="input-with-icon">
+          <span className="field-icon" aria-hidden="true"><UserIcon /></span>
+          <input id="fName" ref={refs.name} className={errors.name ? 'bad' : undefined} required autoComplete="name" autoCapitalize="words" enterKeyHint="next" maxLength={80}
+            value={values.name} onChange={change('name')} aria-invalid={errors.name ? 'true' : undefined} aria-describedby="e_fName" />
+        </div>
         <span className="ferr" id="e_fName" aria-live="polite">{errors.name}</span>
 
         <label htmlFor="fPhone">Mobile Number*</label>
-        <input id="fPhone" ref={refs.phone} className={errors.phone ? 'bad' : undefined} type="tel" required autoComplete="tel" inputMode="tel" enterKeyHint="next" maxLength={20} placeholder="98765 43210"
-          value={values.phone} onChange={change('phone')} aria-invalid={errors.phone ? 'true' : undefined} aria-describedby="e_fPhone" />
+        <div className="input-with-icon">
+          <span className="field-icon" aria-hidden="true"><PhoneIcon /></span>
+          <input id="fPhone" ref={refs.phone} className={errors.phone ? 'bad' : undefined} type="tel" required autoComplete="tel" inputMode="tel" enterKeyHint="next" maxLength={20} placeholder="98765 43210"
+            value={values.phone} onChange={change('phone')} aria-invalid={errors.phone ? 'true' : undefined} aria-describedby="e_fPhone" />
+        </div>
         <span className="ferr" id="e_fPhone" aria-live="polite">{errors.phone}</span>
 
         <label htmlFor="fCity">Location*</label>
-        <input id="fCity" ref={refs.location} className={errors.location ? 'bad' : undefined} required enterKeyHint="done" maxLength={100} autoComplete="address-level2" placeholder="Area / city, e.g. Shivpur, Varanasi"
-          value={values.location} onChange={change('location')} aria-invalid={errors.location ? 'true' : undefined} aria-describedby="e_fCity" />
+        <div className="input-with-icon">
+          <span className="field-icon" aria-hidden="true"><LocationIcon /></span>
+          <input id="fCity" ref={refs.location} className={errors.location ? 'bad' : undefined} required enterKeyHint="done" maxLength={100} autoComplete="address-level2" placeholder="Area / city, e.g. Shivpur, Varanasi"
+            value={values.location} onChange={change('location')} aria-invalid={errors.location ? 'true' : undefined} aria-describedby="e_fCity" />
+        </div>
         <span className="ferr" id="e_fCity" aria-live="polite">{errors.location}</span>
+
+        <label htmlFor="fProjectType">Project Type</label>
+        <div className="input-with-icon">
+          <span className="field-icon" aria-hidden="true"><BriefcaseIcon /></span>
+          <select id="fProjectType" value={values.projectType} onChange={change('projectType')}>
+            <option value="">Select a project type</option>
+            <option>Residential Construction</option>
+            <option>Commercial Construction</option>
+            <option>Civil Infrastructure</option>
+            <option>Real Estate Investment</option>
+            <option>Government Tenders</option>
+            <option>Other</option>
+          </select>
+        </div>
 
         <p className="req-note" style={{ margin: '2px 0 0' }}>
           By sending, you agree we may call or WhatsApp you about this enquiry. See our <Link to={ROUTES.privacy}>Privacy Policy</Link>.
@@ -131,7 +155,8 @@ export default function LeadForm() {
           <a className="btn" href={whatsappHref} target="_blank" rel="noopener noreferrer">Send on WhatsApp instead</a>
         </p>
         <button className="btn" type="submit" disabled={sending}>{sending ? 'Sending...' : 'Request a call back'}</button>
-        <p className="req-note">All 3 fields are required.</p>
+        <p className="privacy-reassurance">Your details are kept private and used only to respond to your enquiry.</p>
+        <p className="req-note">Name, mobile number and location are required.</p>
       </form>
 
       <div className={`done${status === 'sent' ? ' show' : ''}`} id="done" ref={doneRef} aria-live="polite" tabIndex={-1}>

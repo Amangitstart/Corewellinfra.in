@@ -30,17 +30,22 @@ export default function FeedbackSection() {
   return (
     <section className="fbsec" id="feedback">
       <div className="wrap split">
-        <div>
-          <h2>Share your feedback</h2>
-          <p className="intro">Bought from us? Tell us how it went. Your feedback helps us improve and helps other buyers.</p>
+        <div className="fb-left">
+          <h2>Your Feedback Matters.</h2>
+          <p className="intro">Your experience helps us improve our work and serve future clients better.</p>
           <div className="fb-thanks-art">
             <img src="/images/feedback-thank-you.png" alt="Thank you illustration about sharing feedback" loading="lazy" decoding="async" />
           </div>
         </div>
         <div className="fbwrap">
-          <form id="fbForm" noValidate className={leaving ? 'sent' : undefined} style={sent ? { display: 'none' } : undefined} onSubmit={onSubmit}>
+          <form id="fbForm" className={`feedback-card${leaving ? ' sent' : ''}`} noValidate style={sent ? { display: 'none' } : undefined} onSubmit={onSubmit}>
+            <div className="feedback-card-heading">
+              <span className="feedback-kicker">Your voice matters</span>
+              <h3>Rate Your Experience</h3>
+              <p>Tell us how we did and help us keep improving.</p>
+            </div>
             <label htmlFor="bName">Your name*</label>
-            <input id="bName" required autoComplete="name" maxLength={80} value={name} onChange={(e) => setName(e.target.value)} />
+            <input id="bName" required autoComplete="name" maxLength={80} placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} />
             <label id="rateLbl">Your rating*</label>
             <div className="stars" role="radiogroup" aria-labelledby="rateLbl">
               {STARS.map((n) => (
@@ -51,9 +56,9 @@ export default function FeedbackSection() {
               ))}
             </div>
             <label htmlFor="bMsg">Your feedback*</label>
-            <textarea id="bMsg" rows={4} required maxLength={1000} value={message} onChange={(e) => setMessage(e.target.value)} />
+            <textarea id="bMsg" rows={5} required maxLength={1000} placeholder="Tell us about your experience with Corewell Infra..." value={message} onChange={(e) => setMessage(e.target.value)} />
             <p className="err" id="bErr" role="alert">{error}</p>
-            <button className="btn" type="submit" disabled={sending}>{sending ? 'Opening WhatsApp...' : 'Send feedback'}</button>
+            <button className="btn" type="submit" disabled={sending}>{sending ? 'Opening WhatsApp...' : 'Submit Feedback'}</button>
           </form>
           <div className={`done${sent ? ' show' : ''}`} id="bDone" aria-live="polite">
             <svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="23" /><path d="M15 27l8 8 14-16" /></svg>
