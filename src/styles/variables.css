@@ -20,3 +20,8 @@ html[data-theme="dark"] {
   --surface:#202020;
   --surface-soft:#292929
 }
+
+:root {
+  --section-space:80px;
+  --section-content-gap:28px
+}
